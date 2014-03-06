@@ -39,37 +39,67 @@ int inicializarVideo(int opcion) {
     if (!cap.isOpened()) { return -1; }
     Mat srcFrame,dstFrame,auxFrame;
     namedWindow("Original");
-    for (;;) {
-        cap >> srcFrame;
-        imshow("Original", srcFrame);
-        //cvtColor(frame, edges);
-        //GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
-        //Canny(edges, edges, 0, 30, 3);
-        if (opcion==1) {    // Contraste
-            mostrarHistograma(srcFrame,"Histograma imagen original");
+    
+    //cvtColor(frame, edges);
+    //GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
+    //Canny(edges, edges, 0, 30, 3);
+    if (opcion==1) {    // Contraste
+        namedWindow("Contraste");
+        createTrackbar("Alpha", "Contraste", &alpha, 7, NULL);
+        createTrackbar("Beta", "Contraste", &beta, 50, NULL);
+        namedWindow("Histograma imagen original", CV_WINDOW_AUTOSIZE );
+        namedWindow("Histograma imagen ecualizada", CV_WINDOW_AUTOSIZE );
+        for (; ; ) {
+            // Se extrae un nuevo fotograma
+            cap >> srcFrame;
+            imshow("Original", srcFrame);
+            // Se muestra la imagen contrastada con alpha y beta
             imshow("Contraste", metodoContraste(srcFrame,alpha,beta));
-            /// Create Trackbars
-            createTrackbar("Alpha", "Contraste", &alpha, 7, NULL);
-            createTrackbar("Beta", "Contraste", &beta, 50, NULL);
+            // Se muestra la imagen con el histograma ecualizado
             dstFrame = ecualizarHistograma(srcFrame);
             imshow("Ecualizada", dstFrame);
-            
-            mostrarHistograma(dstFrame, "Histograma imagen ecualizada");
+            // Se muestran los dos histogramas
+            imshow("Histograma imagen original",Histograma(srcFrame));
+            imshow("Histograma imagen ecualizada",Histograma(dstFrame));
+            if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
-        else if (opcion==2) {     // Alien
+    }
+    else if (opcion==2) {     // Alien
+        for (; ; ) {
+            // Se extrae un nuevo fotograma
+            cap >> srcFrame;
+            imshow("Original", srcFrame);
             imshow("Alien", faceDetection(srcFrame));
             //imshow("Alien", metodoAlien(frame));
+            if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
-        else if (opcion==3) {     // Poster
+    }
+    else if (opcion==3) {     // Poster
+        for (; ; ) {
+            // Se extrae un nuevo fotograma
+            cap >> srcFrame;
+            imshow("Original", srcFrame);
             imshow("Poster",metodoPoster(srcFrame));
+            if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
-        else if (opcion==4) {     // Dibu
+    }
+    else if (opcion==4) {     // Dibu
+        for (; ; ) {
+            // Se extrae un nuevo fotograma
+            cap >> srcFrame;
+            imshow("Original", srcFrame);
             imshow("Dibu",metodoDibu(srcFrame));
+            if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
-        else if (opcion==5) {     // Distorsion
+    }
+    else if (opcion==5) {     // Distorsion
+        for (; ; ) {
+            // Se extrae un nuevo fotograma
+            cap >> srcFrame;
+            imshow("Original", srcFrame);
             imshow("Distorsion",metodoDistorsion(srcFrame));
+            if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
-        if (waitKey(30)>=0) { destroyAllWindows();  break; }
     }
     return 0;
 }
