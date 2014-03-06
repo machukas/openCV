@@ -14,8 +14,7 @@ using namespace std;
 
 Mat metodoDistorsion(Mat srcFrame) {
     
-    Mat dst;
-    Mat map_x, map_y;
+    Mat map_x, map_y, output;
     int x,y,k1;
     
     double Cx = (double)srcFrame.cols/2;
@@ -27,15 +26,15 @@ Mat metodoDistorsion(Mat srcFrame) {
     for (x=0; x<map_x.rows; x++) {
         double ty = x-Cy;
         for (y=0; y<map_x.cols; y++) {
-            double tx=(double)y-Cx;
-            double rt = tx*tx + ty*ty;
             
-            k1=5;
-            map_x.at<float>(x,y) = (double) (tx/(1 + double(k1/1000000.0)*rt)+Cx);
-            map_y.at<float>(x,y) = (double) (ty/(1 + double(k1/1000000.0)*rt)+Cy);
+            double tx=(double)y-Cx;
+            double r2 = tx*tx + ty*ty;
+            
+            k1=5;   // radial distortion coefficient
+            map_x.at<float>(x,y) = (double) (tx/(1 + double(k1/1000000.0)*r2)+Cx);
+            map_y.at<float>(x,y) = (double) (ty/(1 + double(k1/1000000.0)*r2)+Cy);
         }
     }
-    remap(srcFrame, dst, map_x, map_y, CV_INTER_LINEAR, BORDER_CONSTANT);
-    
-    return dst;
+    remap(srcFrame, output, map_x, map_y, CV_INTER_LINEAR);
+    return output;
 }
