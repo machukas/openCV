@@ -19,6 +19,7 @@ int alpha = 1;
 int beta = 0;
 
 int menu() {
+    // you
     int opcion;
     printf("MENU\n");
     printf("Opcion 1: Contraste\n");
