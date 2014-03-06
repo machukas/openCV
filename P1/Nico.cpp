@@ -19,9 +19,8 @@ int alpha = 1;
 int beta = 0;
 
 int menu() {
-    // you
     int opcion;
-    printf("MENU hola caracola\n");
+    printf("MENU\n");
     printf("Opcion 1: Contraste\n");
     printf("Opcion 2: Alien\n");
     printf("Opcion 3: Poster\n");

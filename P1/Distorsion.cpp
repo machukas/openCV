@@ -17,7 +17,6 @@ Mat metodoDistorsion(Mat srcFrame) {
     Mat dst;
     Mat map_x, map_y;
     int x,y,k1;
-    k1 = 0;
     
     double Cx = (double)srcFrame.cols/2;
     double Cy = (double)srcFrame.rows/2;
@@ -31,7 +30,7 @@ Mat metodoDistorsion(Mat srcFrame) {
             double tx=(double)y-Cx;
             double rt = tx*tx + ty*ty;
             
-            k1=-10;
+            k1=5;
             map_x.at<float>(x,y) = (double) (tx/(1 + double(k1/1000000.0)*rt)+Cx);
             map_y.at<float>(x,y) = (double) (ty/(1 + double(k1/1000000.0)*rt)+Cy);
         }
