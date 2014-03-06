@@ -12,7 +12,7 @@
 using namespace cv;
 using namespace std;
 
-void mostrarHistograma(Mat frame, const string& winname){
+Mat Histograma(Mat frame){
     /// Separate the image in 3 places ( B, G and R )
     vector<Mat> bgr_planes;
     split( frame, bgr_planes );
@@ -58,9 +58,7 @@ void mostrarHistograma(Mat frame, const string& winname){
              Scalar( 0, 0, 255), 2, 8, 0  );
     }
     
-    /// Display
-    namedWindow(winname, CV_WINDOW_AUTOSIZE );
-    imshow(winname, histImage );
+    return histImage;
 }
 
 Mat ecualizarHistograma(Mat frame){
