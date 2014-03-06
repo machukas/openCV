@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		206EC9B218C8D1EB00755A35 /* Distorsion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9B018C8D1EB00755A35 /* Distorsion.cpp */; };
-		20A4E60C18C8708A00468EC5 /* Contraste.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20A4E60418C8708A00468EC5 /* Contraste.cpp */; };
-		20A4E60D18C8708A00468EC5 /* Dibu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20A4E60618C8708A00468EC5 /* Dibu.cpp */; };
-		20A4E60E18C8708A00468EC5 /* Nico.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20A4E60818C8708A00468EC5 /* Nico.cpp */; };
-		20A4E60F18C8708A00468EC5 /* Poster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20A4E60918C8708A00468EC5 /* Poster.cpp */; };
-		20A4E61218C87F3A00468EC5 /* Alien.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20A4E61118C87F3A00468EC5 /* Alien.cpp */; };
+		2085398D18C8E4C900A7A7CC /* Alien.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398218C8E4C900A7A7CC /* Alien.cpp */; };
+		2085398E18C8E4C900A7A7CC /* Contraste.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398418C8E4C900A7A7CC /* Contraste.cpp */; };
+		2085398F18C8E4C900A7A7CC /* Dibu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398618C8E4C900A7A7CC /* Dibu.cpp */; };
+		2085399018C8E4C900A7A7CC /* Distorsion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398818C8E4C900A7A7CC /* Distorsion.cpp */; };
+		2085399118C8E4C900A7A7CC /* Nico.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398A18C8E4C900A7A7CC /* Nico.cpp */; };
+		2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398B18C8E4C900A7A7CC /* Poster.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,17 +28,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		206EC9B018C8D1EB00755A35 /* Distorsion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Distorsion.cpp; sourceTree = "<group>"; };
-		206EC9B118C8D1EB00755A35 /* Distorsion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Distorsion.h; sourceTree = "<group>"; };
-		20A4E60418C8708A00468EC5 /* Contraste.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Contraste.cpp; sourceTree = "<group>"; };
-		20A4E60518C8708A00468EC5 /* Contraste.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contraste.h; sourceTree = "<group>"; };
-		20A4E60618C8708A00468EC5 /* Dibu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dibu.cpp; sourceTree = "<group>"; };
-		20A4E60718C8708A00468EC5 /* Dibu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dibu.h; sourceTree = "<group>"; };
-		20A4E60818C8708A00468EC5 /* Nico.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nico.cpp; sourceTree = "<group>"; };
-		20A4E60918C8708A00468EC5 /* Poster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Poster.cpp; sourceTree = "<group>"; };
-		20A4E60A18C8708A00468EC5 /* Poster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Poster.h; sourceTree = "<group>"; };
-		20A4E61018C87E9900468EC5 /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alien.h; sourceTree = "<group>"; };
-		20A4E61118C87F3A00468EC5 /* Alien.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Alien.cpp; sourceTree = "<group>"; };
+		2085398218C8E4C900A7A7CC /* Alien.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Alien.cpp; path = P1/Alien.cpp; sourceTree = SOURCE_ROOT; };
+		2085398318C8E4C900A7A7CC /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alien.h; path = P1/Alien.h; sourceTree = SOURCE_ROOT; };
+		2085398418C8E4C900A7A7CC /* Contraste.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Contraste.cpp; path = P1/Contraste.cpp; sourceTree = SOURCE_ROOT; };
+		2085398518C8E4C900A7A7CC /* Contraste.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contraste.h; path = P1/Contraste.h; sourceTree = SOURCE_ROOT; };
+		2085398618C8E4C900A7A7CC /* Dibu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dibu.cpp; path = P1/Dibu.cpp; sourceTree = SOURCE_ROOT; };
+		2085398718C8E4C900A7A7CC /* Dibu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dibu.h; path = P1/Dibu.h; sourceTree = SOURCE_ROOT; };
+		2085398818C8E4C900A7A7CC /* Distorsion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Distorsion.cpp; path = P1/Distorsion.cpp; sourceTree = SOURCE_ROOT; };
+		2085398918C8E4C900A7A7CC /* Distorsion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Distorsion.h; path = P1/Distorsion.h; sourceTree = SOURCE_ROOT; };
+		2085398A18C8E4C900A7A7CC /* Nico.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Nico.cpp; path = P1/Nico.cpp; sourceTree = SOURCE_ROOT; };
+		2085398B18C8E4C900A7A7CC /* Poster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Poster.cpp; path = P1/Poster.cpp; sourceTree = SOURCE_ROOT; };
+		2085398C18C8E4C900A7A7CC /* Poster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Poster.h; path = P1/Poster.h; sourceTree = SOURCE_ROOT; };
 		20D7011818B4963E00276136 /* Vision por computador */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Vision por computador"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -56,17 +56,17 @@
 		20A4E60118C8708A00468EC5 /* P1 */ = {
 			isa = PBXGroup;
 			children = (
-				20A4E61118C87F3A00468EC5 /* Alien.cpp */,
-				20A4E60418C8708A00468EC5 /* Contraste.cpp */,
-				20A4E60618C8708A00468EC5 /* Dibu.cpp */,
-				206EC9B018C8D1EB00755A35 /* Distorsion.cpp */,
-				20A4E60818C8708A00468EC5 /* Nico.cpp */,
-				20A4E60918C8708A00468EC5 /* Poster.cpp */,
-				20A4E61018C87E9900468EC5 /* Alien.h */,
-				20A4E60518C8708A00468EC5 /* Contraste.h */,
-				20A4E60718C8708A00468EC5 /* Dibu.h */,
-				206EC9B118C8D1EB00755A35 /* Distorsion.h */,
-				20A4E60A18C8708A00468EC5 /* Poster.h */,
+				2085398218C8E4C900A7A7CC /* Alien.cpp */,
+				2085398418C8E4C900A7A7CC /* Contraste.cpp */,
+				2085398618C8E4C900A7A7CC /* Dibu.cpp */,
+				2085398818C8E4C900A7A7CC /* Distorsion.cpp */,
+				2085398A18C8E4C900A7A7CC /* Nico.cpp */,
+				2085398B18C8E4C900A7A7CC /* Poster.cpp */,
+				2085398318C8E4C900A7A7CC /* Alien.h */,
+				2085398518C8E4C900A7A7CC /* Contraste.h */,
+				2085398718C8E4C900A7A7CC /* Dibu.h */,
+				2085398918C8E4C900A7A7CC /* Distorsion.h */,
+				2085398C18C8E4C900A7A7CC /* Poster.h */,
 			);
 			name = P1;
 			path = ../../Dropbox/Universidad/Cuarto/Pendientes/Vision_por_computador/Practicas/P1;
@@ -139,12 +139,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20A4E60F18C8708A00468EC5 /* Poster.cpp in Sources */,
-				206EC9B218C8D1EB00755A35 /* Distorsion.cpp in Sources */,
-				20A4E60E18C8708A00468EC5 /* Nico.cpp in Sources */,
-				20A4E61218C87F3A00468EC5 /* Alien.cpp in Sources */,
-				20A4E60C18C8708A00468EC5 /* Contraste.cpp in Sources */,
-				20A4E60D18C8708A00468EC5 /* Dibu.cpp in Sources */,
+				2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */,
+				2085398F18C8E4C900A7A7CC /* Dibu.cpp in Sources */,
+				2085399118C8E4C900A7A7CC /* Nico.cpp in Sources */,
+				2085398E18C8E4C900A7A7CC /* Contraste.cpp in Sources */,
+				2085399018C8E4C900A7A7CC /* Distorsion.cpp in Sources */,
+				2085398D18C8E4C900A7A7CC /* Alien.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
