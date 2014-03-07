@@ -11,6 +11,7 @@
 #include "Dibu.h"
 #include "Distorsion.h"
 #include "espejo.h"
+#include "Sepia.h"
 
 using namespace cv;
 using namespace std;
@@ -27,7 +28,8 @@ int menu() {
     printf("Opcion 3: Poster\n");
     printf("Opcion 4: Dibu\n");
     printf("Opcion 5: Distorsion\n");
-    printf("Opcion 6: Espejo\n\n");
+    printf("Opcion 6: Espejo\n");
+    printf("Opcion 7: Sepia\n\n");
     printf("Ingrese una opcion (0 para salir) >> ");
     scanf("%d",&opcion);
     return opcion;
@@ -113,9 +115,17 @@ int inicializarVideo(int opcion) {
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
+    else if (opcion==7) {     // Sepia
+        for (; ; ) {
+            // Se extrae un nuevo fotograma
+            cap >> srcFrame;
+            imshow("Original", srcFrame);
+            imshow("Sepia",metodoSepia(srcFrame));
+            if (waitKey(30)>=0) { destroyAllWindows();  break; }
+        }
+    }
     return 0;
 }
-
 
 int opciones(int opcion) {
     if (opcion==1) { inicializarVideo(1); }         // Contraste
@@ -124,6 +134,7 @@ int opciones(int opcion) {
     else if (opcion==4) { inicializarVideo(4); }    // Dibu
     else if (opcion==5) { inicializarVideo(5); }    // Distorsion
     else if (opcion==6) { inicializarVideo(6); }    // Espejo
+    else if (opcion==7) { inicializarVideo(7); }    // Sepia
     else if (opcion==0) { return -1; }
     return 0;
 }
