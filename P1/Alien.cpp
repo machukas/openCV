@@ -43,7 +43,10 @@ Mat metodoAlien(Mat frame) {
     Mat mask, maskPlusBorder;
     maskPlusBorder = Mat::zeros(sh+2, sw+2, CV_8UC1);
     mask = maskPlusBorder(Rect(1,1,sw,sh));
-    //resize(frame, mask, smallSize);
+    //resize(edge, mask, frame);
+    
+    imshow("mask", mask);
+    //imshow("edgeMask", edgeMask);
     
     const int EDGES_THRESHOLD = 80;
     threshold(mask, mask, EDGES_THRESHOLD, 255, THRESH_BINARY);
@@ -79,7 +82,7 @@ Mat metodoAlien(Mat frame) {
     int Green = 70;
     int Blue = 0;
     Scalar color = CV_RGB(Red, Green, Blue);
-    imshow("mask", mask);
+    
     add(frame, color, frame, mask);
     
     destination.setTo(0);
