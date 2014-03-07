@@ -22,4 +22,8 @@ Mat faceDetection(Mat frame);
 
 Mat metodoAlien(Mat frame);
 
+Mat pruebaAlien(Mat src);
+
+void kmedias(Mat src);
+
 #endif /* defined(__opencv__Alien__) */

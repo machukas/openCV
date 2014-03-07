@@ -76,9 +76,11 @@ int inicializarVideo(int opcion) {
             cap >> srcFrame;
             imshow("Original", srcFrame);
             frameWithFace = faceDetection(srcFrame);
-            imshow("Alien", metodoAlien(frameWithFace));
+            //frameWithFace = metodoAlien(frameWithFace);
+            imshow("Alien", frameWithFace);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
+        kmedias(frameWithFace);
     }
     else if (opcion==3) {     // Poster
         for (; ; ) {
