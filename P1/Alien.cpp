@@ -45,7 +45,7 @@ Mat metodoAlien(Mat frame) {
     mask = maskPlusBorder(Rect(1,1,sw,sh));
     //resize(edge, mask, frame);
     
-    imshow("mask", mask);
+    
     //imshow("edgeMask", edgeMask);
     
     const int EDGES_THRESHOLD = 80;
@@ -79,12 +79,13 @@ Mat metodoAlien(Mat frame) {
     }
     mask -= edgeMask;
     int Red = 0;
-    int Green = 70;
+    int Green = 0;
     int Blue = 0;
     Scalar color = CV_RGB(Red, Green, Blue);
     
     add(frame, color, frame, mask);
-    
+    // Ahora en frame está la region de la elipse pintada de verde
+    imshow("prueba", frame);
     destination.setTo(0);
     frame.copyTo(destination,mask);
     
