@@ -10,6 +10,7 @@
 #include "Poster.h"
 #include "Dibu.h"
 #include "Distorsion.h"
+#include "espejo.h"
 
 using namespace cv;
 using namespace std;
@@ -25,7 +26,8 @@ int menu() {
     printf("Opcion 2: Alien\n");
     printf("Opcion 3: Poster\n");
     printf("Opcion 4: Dibu\n");
-    printf("Opcion 5: Distorsion\n\n");
+    printf("Opcion 5: Distorsion\n");
+    printf("Opcion 6: Espejo\n\n");
     printf("Ingrese una opcion (0 para salir) >> ");
     scanf("%d",&opcion);
     return opcion;
@@ -101,6 +103,15 @@ int inicializarVideo(int opcion) {
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
+    else if (opcion==6) {     // Espejo
+        for (; ; ) {
+            // Se extrae un nuevo fotograma
+            cap >> srcFrame;
+            imshow("Original", srcFrame);
+            imshow("Espejo",metodoEspejo(srcFrame));
+            if (waitKey(30)>=0) { destroyAllWindows();  break; }
+        }
+    }
     return 0;
 }
 
@@ -111,6 +122,7 @@ int opciones(int opcion) {
     else if (opcion==3) { inicializarVideo(3); }    // Poster
     else if (opcion==4) { inicializarVideo(4); }    // Dibu
     else if (opcion==5) { inicializarVideo(5); }    // Distorsion
+    else if (opcion==6) { inicializarVideo(6); }    // Espejo
     else if (opcion==0) { return -1; }
     return 0;
 }
