@@ -27,23 +27,23 @@ Mat faceDetection(Mat frame){
 
 Mat metodoAlien(Mat frame) {
     Mat destination;
-    faceDetection(frame);
-    /* Reduce the number of pixels by a factor of four*/
+    /*faceDetection(frame);
+    /* Reduce the number of pixels by a factor of four
     Size size = frame.size();
     Size smallSize;
     smallSize.width = size.width/4;
     smallSize.height = size.height/4;
     Mat smallImg = Mat(smallSize, CV_8UC3);
-    resize(frame, smallImg, smallSize, 0,0, INTER_LINEAR);
+    resize(frame, smallImg, smallSize, 0,0, INTER_LINEAR); */
     
-    Mat yuv = Mat(smallSize, CV_8UC3);
-    cvtColor(smallImg, yuv, CV_BGR2YCrCb);
-    int sw = smallSize.width;
-    int sh = smallSize.height;
+    Mat yuv = Mat(frame.size(), CV_8UC3);
+    cvtColor(frame, yuv, CV_BGR2YCrCb);
+    int sw = frame.size().width;
+    int sh = frame.size().height;
     Mat mask, maskPlusBorder;
     maskPlusBorder = Mat::zeros(sh+2, sw+2, CV_8UC1);
     mask = maskPlusBorder(Rect(1,1,sw,sh));
-    resize(frame, mask, smallSize);
+    //resize(frame, mask, smallSize);
     
     const int EDGES_THRESHOLD = 80;
     threshold(mask, mask, EDGES_THRESHOLD, 255, THRESH_BINARY);
@@ -79,12 +79,11 @@ Mat metodoAlien(Mat frame) {
     int Green = 70;
     int Blue = 0;
     Scalar color = CV_RGB(Red, Green, Blue);
-    cv::add(smallImg, color, smallImg, mask);
+    imshow("mask", mask);
+    add(frame, color, frame, mask);
     
-    Mat bigImg;
-    resize(smallImg, bigImg, size, 0, 0, INTER_LINEAR);
     destination.setTo(0);
-    bigImg.copyTo(destination,mask);
+    frame.copyTo(destination,mask);
     
     //cvtColor(frame, destination, "CV_BGR2HSV_FULL");
     

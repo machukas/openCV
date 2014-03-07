@@ -67,12 +67,13 @@ int inicializarVideo(int opcion) {
         }
     }
     else if (opcion==2) {     // Alien
+        Mat frameWithFace;
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
-            imshow("Alien", faceDetection(srcFrame));
-            //imshow("Alien", metodoAlien(frame));
+            frameWithFace = faceDetection(srcFrame);
+            imshow("Alien", metodoAlien(frameWithFace));
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
