@@ -15,8 +15,6 @@ using namespace cv;
 using namespace std;
 
 //Variables globales
-int alpha = 1;
-int beta = 0;
 
 int menu() {
     int opcion;
@@ -44,9 +42,10 @@ int inicializarVideo(int opcion) {
     //GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
     //Canny(edges, edges, 0, 30, 3);
     if (opcion==1) {    // Contraste
+        int alpha = 50, beta = 50;
         namedWindow("Contraste");
-        createTrackbar("Alpha", "Contraste", &alpha, 7, NULL);
-        createTrackbar("Beta", "Contraste", &beta, 50, NULL);
+        createTrackbar("Alpha", "Contraste", &alpha, 100, NULL);
+        createTrackbar("Beta", "Contraste", &beta, 100, NULL);
         namedWindow("Histograma imagen original", CV_WINDOW_AUTOSIZE );
         namedWindow("Histograma imagen ecualizada", CV_WINDOW_AUTOSIZE );
         for (; ; ) {
@@ -54,7 +53,9 @@ int inicializarVideo(int opcion) {
             cap >> srcFrame;
             imshow("Original", srcFrame);
             // Se muestra la imagen contrastada con alpha y beta
-            imshow("Contraste", metodoContraste(srcFrame,alpha,beta));
+            double gain = alpha / 50.0; // ganancia entre 0 y 2
+            int bias = beta-50;         // sesgo entre 0 y 50
+            imshow("Contraste", metodoContraste(srcFrame,gain,bias));
             // Se muestra la imagen con el histograma ecualizado
             dstFrame = ecualizarHistograma(srcFrame);
             imshow("Ecualizada", dstFrame);
