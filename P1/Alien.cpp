@@ -12,10 +12,11 @@
 using namespace cv;
 using namespace std;
 
+// Variables globales
+
 Mat faceDetection(Mat frame){
     Mat faceOutline = Mat::zeros(frame.size(), CV_8UC3);
     Scalar color = CV_RGB(255, 255, 255);
-    int thickness = 4;
     int sw = frame.size().width;
     int sh = frame.size().height;
     int faceH = sh/2 * 70/100;
@@ -27,75 +28,7 @@ Mat faceDetection(Mat frame){
     return dst;
 }
 
-Mat metodoAlien(Mat frame) {
-    Mat destination;
-    /*faceDetection(frame);
-    /* Reduce the number of pixels by a factor of four
-    Size size = frame.size();
-    Size smallSize;
-    smallSize.width = size.width/4;
-    smallSize.height = size.height/4;
-    Mat smallImg = Mat(smallSize, CV_8UC3);
-    resize(frame, smallImg, smallSize, 0,0, INTER_LINEAR); */
-    
-    //Mat yuv = Mat(frame.size(), CV_8UC3);
-    //cvtColor(frame, yuv, CV_BGR2YCrCb);
-    int sw = frame.size().width;
-    int sh = frame.size().height;
-    Mat mask, maskPlusBorder;
-    maskPlusBorder = Mat::zeros(sh+2, sw+2, CV_8UC1);
-    mask = maskPlusBorder(Rect(1,1,sw,sh));
-    //resize(edge, mask, frame);
-    
-    
-    //imshow("edgeMask", edgeMask);
-    
-    const int EDGES_THRESHOLD = 80;
-    threshold(mask, mask, EDGES_THRESHOLD, 255, THRESH_BINARY);
-    dilate(mask,mask,Mat());
-    erode(mask,mask,Mat());
-    
-    int const NUM_SKIN_POINTS = 6;
-    Point skinPts[NUM_SKIN_POINTS];
-    skinPts[0] = Point(sw/2, sh/2-sh/6);
-    skinPts[1] = Point(sw/2-sw/11, sh/2-sh/6);
-    skinPts[2] = Point(sw/2+sw/11, sh/2-sh/6);
-    skinPts[3] = Point(sw/2, sh/2-sh/16);
-    skinPts[4] = Point(sw/2-sw/9, sh/2+sh/16);
-    skinPts[5] = Point(sw/2+sw/9, sh/2-sh/16);
-    
-    const int LOWER_Y = 60;
-    const int UPPER_Y = 80;
-    const int LOWER_Cr = 25;
-    const int UPPER_Cr = 15;
-    const int LOWER_Cb = 20;
-    const int UPPER_Cb = 15;
-    Scalar lowerDiff = Scalar(LOWER_Y, LOWER_Cr, LOWER_Cb);
-    Scalar upperDiff = Scalar(UPPER_Y, UPPER_Cr, UPPER_Cb);
-    
-    const int CONNECTED_COMPONENTS = 4;
-    const int flags = CONNECTED_COMPONENTS | FLOODFILL_FIXED_RANGE | FLOODFILL_MASK_ONLY;
-    Mat edgeMask = mask.clone();
-    for (int i=0; i<NUM_SKIN_POINTS; i++) {
-        floodFill(frame, maskPlusBorder, skinPts[i], Scalar(), NULL, lowerDiff, upperDiff, flags);
-    }
-    mask -= edgeMask;
-    int Red = 0;
-    int Green = 0;
-    int Blue = 0;
-    Scalar color = CV_RGB(Red, Green, Blue);
-    
-    add(frame, color, frame, mask);
-    // Ahora en frame está la region de la elipse pintada de verde
-    imshow("prueba", frame);
-    destination.setTo(0);
-    frame.copyTo(destination,mask);
-    
-    //cvtColor(frame, destination, "CV_BGR2HSV_FULL");
-    
-    return destination;
-}
-void kmedias(Mat src)
+void kmedias(Mat src,Mat original)
 {
     //step 1 : map the src to the samples
     Mat samples(src.total(), 3, CV_32F);
@@ -152,12 +85,10 @@ void kmedias(Mat src)
     cout << "med: " << endl;
     cout << media << endl;
     Vec3f pixel;
-    pixel[0] = (double)src.at<Vec3f>(300,200)[0];
-    pixel[1] = (double)src.at<Vec3f>(300,200)[1];
-    pixel[2] = (double)src.at<Vec3f>(300,200)[2];
+    
     
     cout << "src.at<Vec3f>(400,200): " << endl;
-    cout << src.at<Vec3f>(400,200) << endl;
+    cout << original.at<Vec3b>(300,200) << endl;
     
     cout << "pixel: " << endl;
     cout << pixel << endl;
@@ -168,11 +99,24 @@ void kmedias(Mat src)
     cout << "icov: " << endl;
     cout << convarianzaInvertida << endl;
     
+    for( int y = 0; y < original.rows; y++ ){
+        for( int x = 0; x < original.cols; x++ )
+        {
+            pixel[0] = (double)original.at<Vec3b>(y,x)[0];
+            pixel[1] = (double)original.at<Vec3b>(y,x)[1];
+            pixel[2] = (double)original.at<Vec3b>(y,x)[2];
     double res = Mahalanobis(pixel, centers.at<cv::Vec3f>(0), convarianzaInvertida);
     double res1 = Mahalanobis(pixel, centers.at<cv::Vec3f>(1), convarianzaInvertida);
     double res2 = Mahalanobis(pixel, centers.at<cv::Vec3f>(2), convarianzaInvertida);
+            if (res>res1&&res>res2) {
+                printf("res=%f res1=%f res2=%f",res,res1,res2);
+                original.at<Vec3b>(y,x)[0]=0;
+                original.at<Vec3b>(y,x)[1]=0;
+                original.at<Vec3b>(y,x)[2]=0;            }
     
-    printf("res=%f res1=%f res2=%f",res,res1,res2);
+    
+        }}
+    imshow("mierdapati", original);
      waitKey();
 }
 Mat pruebaAlien(Mat src, Mat centers,Mat labels){
