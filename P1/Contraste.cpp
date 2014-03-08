@@ -78,15 +78,19 @@ Mat ecualizarHistograma(Mat frame){
     return img_hist_equalized;
 }
 
-Mat metodoContraste(Mat frame,int alpha,int beta) {
+Mat metodoContraste(Mat frame,double alpha,int beta) {
     Mat output;
     frame.copyTo(output);
     for( int y = 0; y < output.rows; y++ ){ //Para cada fila
         for( int x = 0; x < output.cols; x++){ //Para cada columna
             for( int c = 0; c < 3; c++ ){ //Para cada canal
                 output.at<Vec3b>(y,x)[c] = saturate_cast<uchar>( alpha*( frame.at<Vec3b>(y,x)[c] ) + beta );
+                //saturate_cast es para prevenir valores fuera de rango
             }
         }
     }
+    /*
+     * Similar a frame.convertTo(output, -1, alpha, beta);
+     */
     return output;
 }

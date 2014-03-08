@@ -16,10 +16,10 @@ using namespace cv;
 
 // Metodos
 
-Mat getSkin(cv::Mat input);
-
 Mat faceDetection(Mat frame);
 
-Mat metodoAlien(Mat frame);
+Mat pruebaMediana(Mat src,Mat completa);
+
+void kmedias(Mat src,Mat original);
 
 #endif /* defined(__opencv__Alien__) */

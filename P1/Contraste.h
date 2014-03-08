@@ -16,7 +16,7 @@ using namespace cv;
 
 // Metodos
 
-Mat metodoContraste(Mat frame,int alpha,int beta);
+Mat metodoContraste(Mat frame,double alpha,int beta);
 
 Mat Histograma(Mat frame);
 
