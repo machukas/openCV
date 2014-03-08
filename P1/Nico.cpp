@@ -80,7 +80,9 @@ int inicializarVideo(int opcion) {
             imshow("Alien", frameWithFace);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
-        kmedias(frameWithFace,srcFrame);
+        //cvtColor(frameWithFace, frameWithFace, CV_BGR2HSV);
+        //kmedias(frameWithFace,srcFrame);
+        imshow("reza",pruebaMediana(frameWithFace,srcFrame));
     }
     else if (opcion==3) {     // Poster
         for (; ; ) {

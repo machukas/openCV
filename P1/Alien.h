@@ -16,11 +16,9 @@ using namespace cv;
 
 // Metodos
 
-Mat getSkin(cv::Mat input);
-
 Mat faceDetection(Mat frame);
 
-Mat pruebaAlien(Mat src);
+Mat pruebaMediana(Mat src,Mat completa);
 
 void kmedias(Mat src,Mat original);
 
