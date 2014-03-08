@@ -18,4 +18,6 @@ using namespace cv;
 
 Mat metodoDibu(Mat frame);
 
+void color_reduce(cv::Mat &input, int div);
+
 #endif /* defined(__opencv__Dibu__) */

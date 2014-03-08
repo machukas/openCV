@@ -12,28 +12,25 @@
 using namespace cv;
 using namespace std;
 
-void color_reduce(cv::Mat &input, cv::Mat &output, size_t div)
-{
-    if(input.data != output.data){
-        output.create(input.size(), input.type());
+void color_reduce(cv::Mat &image, int div) {
+    int nl = image.rows;
+    int nc = image.cols*image.channels();
+    for (int j=0; j<nl; j++) {
+        uchar* data = image.ptr<uchar>(j);
+        for (int i=0; i<nc; i++) {
+            data[i] = data[i]/div*div + div/2;
+        }
     }
-    
-    uchar buffer[256];
-    for(size_t i = 0; i != 256; ++i){
-        buffer[i] = i / div * div + div / 2;
-    }
-    cv::Mat table(1, 256, CV_8U, buffer, sizeof(buffer));
-    cv::LUT(input, table, output);
 }
 
 Mat metodoDibu(Mat srcFrame) {
-    int i,a;
-    cv::Mat poster_output,canny_output, output;
-    color_reduce(srcFrame, poster_output, 32);
+    cv::Mat canny_output, output;    
+    cv::Mat poster_output = srcFrame.clone();
+    color_reduce(poster_output, 32);
     Canny(srcFrame, canny_output, 35, 90);
-    for (i=0; i<canny_output.rows; i++) {
+    for (int i=0; i<canny_output.rows; i++) {
         uchar* data= canny_output.ptr<uchar>(i);
-        for (a=0; a<canny_output.cols; a++) {
+        for (int a=0; a<canny_output.cols; a++) {
             if (data[a]==0) {
                 data[a] = 255;
             } else {

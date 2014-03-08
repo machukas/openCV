@@ -18,6 +18,6 @@ using namespace cv;
 
 Mat metodoPoster(Mat src);
 
-void reduce_color(cv::Mat &input, cv::Mat &output, size_t div);
+void reduce_color(cv::Mat &input, int div);
 
 #endif /* defined(__opencv__Poster__) */
