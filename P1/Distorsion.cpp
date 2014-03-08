@@ -12,10 +12,10 @@
 using namespace cv;
 using namespace std;
 
-Mat metodoDistorsion(Mat srcFrame) {
+Mat metodoDistorsion(Mat srcFrame, int k1) {
     
     Mat map_x, map_y, output;
-    int x,y,k1;
+    int x,y;
     
     double Cx = (double)srcFrame.cols/2;
     double Cy = (double)srcFrame.rows/2;
@@ -30,7 +30,6 @@ Mat metodoDistorsion(Mat srcFrame) {
             double tx=(double)y-Cx;
             double r2 = tx*tx + ty*ty;
             
-            k1=5;   // radial distortion coefficient
             map_x.at<float>(x,y) = (double) (tx/(1 + double(k1/1000000.0)*r2)+Cx);
             map_y.at<float>(x,y) = (double) (ty/(1 + double(k1/1000000.0)*r2)+Cy);
         }

@@ -41,10 +41,6 @@ int inicializarVideo(int opcion) {
     if (!cap.isOpened()) { return -1; }
     Mat srcFrame,dstFrame,auxFrame;
     namedWindow("Original");
-    
-    //cvtColor(frame, edges);
-    //GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
-    //Canny(edges, edges, 0, 30, 3);
     if (opcion==1) {    // Contraste
         int alpha = 50, beta = 50;
         namedWindow("Contraste");
@@ -103,11 +99,14 @@ int inicializarVideo(int opcion) {
         }
     }
     else if (opcion==5) {     // Distorsion
+        int k1 = 5;
+        namedWindow("Distorsion");
+        createTrackbar("k1", "Distorsion", &k1, 100, NULL);
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
-            imshow("Distorsion",metodoDistorsion(srcFrame));
+            imshow("Distorsion",metodoDistorsion(srcFrame,k1));
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }

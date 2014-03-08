@@ -14,6 +14,6 @@
 
 using namespace cv;
 
-Mat metodoDistorsion(Mat srcFrame);
+Mat metodoDistorsion(Mat srcFrame, int k1);
 
 #endif /* defined(__Vision_por_computador__Distorsion__) */
