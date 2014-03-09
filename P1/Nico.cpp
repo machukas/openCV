@@ -99,12 +99,13 @@ int inicializarVideo(int opcion) {
         }
     }
     else if (opcion==5) {     // Distorsion
-        int k1 = 5;
+        int k = 0;
         namedWindow("Distorsion");
-        createTrackbar("k1", "Distorsion", &k1, 100, NULL);
+        createTrackbar("k1", "Distorsion", &k, 10, NULL);
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
+            int k1 = k-5;
             imshow("Original", srcFrame);
             imshow("Distorsion",metodoDistorsion(srcFrame,k1));
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
