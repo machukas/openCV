@@ -117,7 +117,7 @@ int inicializarVideo(int opcion) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
-            t = ((double)getTickCount()-t)/getTickFrequency();
+            t = (double) getTickCount();
             posterizada = metodoPoster(srcFrame);
             t = ((double)getTickCount()-t)/getTickFrequency();
             sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
@@ -132,7 +132,7 @@ int inicializarVideo(int opcion) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
-            t = ((double)getTickCount()-t)/getTickFrequency();
+            t = (double) getTickCount();
             dibuizada = metodoDibu(srcFrame);
             t = ((double)getTickCount()-t)/getTickFrequency();
             sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
@@ -151,7 +151,7 @@ int inicializarVideo(int opcion) {
             cap >> srcFrame;
             int k1 = k-5;
             imshow("Original", srcFrame);
-            t = ((double)getTickCount()-t)/getTickFrequency();
+            t = (double) getTickCount();
             distorsionada = metodoDistorsion(srcFrame,k1);
             t = ((double)getTickCount()-t)/getTickFrequency();
             sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
@@ -166,7 +166,7 @@ int inicializarVideo(int opcion) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
-            t = ((double)getTickCount()-t)/getTickFrequency();
+            t = (double) getTickCount();
             espejada = metodoEspejo(srcFrame);
             t = ((double)getTickCount()-t)/getTickFrequency();
             sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
@@ -181,7 +181,7 @@ int inicializarVideo(int opcion) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
-            t = ((double)getTickCount()-t)/getTickFrequency();
+            t = (double) getTickCount();
             sepiada = metodoSepia(srcFrame);
             t = ((double)getTickCount()-t)/getTickFrequency();
             sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
