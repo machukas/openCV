@@ -194,7 +194,7 @@ Mat pruebaMediana(Mat src, Mat completa){
     Vec3b mediana(h.at(h.size()/2),s.at(s.size()/2),v.at(v.size()/2));
     
     bool seParece[3];
-    
+    Vec3b verde(40,100,55);
     for( int y = 0; y < completa.rows; y++ ){
         for( int x = 0; x < completa.cols; x++ ){
             for (int c = 0; c < 3; c++) { // Se parecen los 3 valores?
@@ -203,10 +203,12 @@ Mat pruebaMediana(Mat src, Mat completa){
                 }
             }
             if (seParece[0]&&seParece[1]&&seParece[2]) {
-                for (int c = 0; c < 3; c++) { // Se transforman los 3 valores
-                    completa.at<Vec3b>(x,y)[c]=0;
-                }
-            }
+            //    for (int c = 0; c < 3; c++) { // Se transforman los 3 valores
+                    completa.at<Vec3b>(x,y)[0]+=verde[0];
+                completa.at<Vec3b>(x,y)[1]+=verde[1];
+                
+                    }
+            //}
             seParece[0] = false;seParece[1] = false;seParece[2] = false;
         }
     }
