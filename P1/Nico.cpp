@@ -39,13 +39,21 @@ int inicializarVideo(int opcion) {
     cap.set(CV_CAP_PROP_FRAME_WIDTH,640);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT,480);
     if (!cap.isOpened()) { return -1; }
-    Mat srcFrame,dstFrame,auxFrame;
+    Mat srcFrame;
     namedWindow("Original");
+    //Variables para el tiempo
+    double t = 0.0;
+    char tiempoEjecucion[255];
+    int fontFace = FONT_HERSHEY_SCRIPT_SIMPLEX;
+    double fontScale = 1;
+    int thickness = 1;
+    cv::Point textOrg(10, 450);
     if (opcion==1) {    // Contraste
+        Mat contrastada,ecualizada;
         int alpha = 50, beta = 50;
         namedWindow("Contraste");
-        createTrackbar("Alpha", "Contraste", &alpha, 100, NULL);
-        createTrackbar("Beta", "Contraste", &beta, 100, NULL);
+        createTrackbar("Ganancia", "Contraste", &alpha, 100, NULL);
+        createTrackbar("Sesgo", "Contraste", &beta, 100, NULL);
         namedWindow("Histograma imagen original", CV_WINDOW_AUTOSIZE );
         namedWindow("Histograma imagen ecualizada", CV_WINDOW_AUTOSIZE );
         for (; ; ) {
@@ -55,13 +63,22 @@ int inicializarVideo(int opcion) {
             // Se muestra la imagen contrastada con alpha y beta
             double gain = alpha / 50.0; // ganancia entre 0 y 2
             int bias = beta-50;         // sesgo entre 0 y 50
-            imshow("Contraste", metodoContraste(srcFrame,gain,bias));
+            t = (double) getTickCount();
+            contrastada = metodoContraste(srcFrame,gain,bias);
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
+            putText(contrastada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
+            imshow("Contraste", contrastada);
             // Se muestra la imagen con el histograma ecualizado
-            dstFrame = ecualizarHistograma(srcFrame);
-            imshow("Ecualizada", dstFrame);
+            t = (double) getTickCount();
+            ecualizada = ecualizarHistograma(srcFrame);
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
+            putText(ecualizada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
+            imshow("Ecualizada", ecualizada);
             // Se muestran los dos histogramas
             imshow("Histograma imagen original",Histograma(srcFrame));
-            imshow("Histograma imagen ecualizada",Histograma(dstFrame));
+            imshow("Histograma imagen ecualizada",Histograma(ecualizada));
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
@@ -71,37 +88,56 @@ int inicializarVideo(int opcion) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
+            // Se presenta una elipse para poner la geta.
             frameWithFace = faceDetection(srcFrame);
-            //frameWithFace = metodoAlien(frameWithFace);
             imshow("Alien", frameWithFace);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
-        //cvtColor(frameWithFace, frameWithFace, CV_BGR2HSV);
-        //kmedias(frameWithFace,srcFrame);
+        Mat alienizada;
+        // Se obtiene la mediana del color de la piel de la cara
+        Vec3b mediana = obtenerMediana(frameWithFace);
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
-            imshow("Alien",pruebaMediana(frameWithFace,srcFrame));
+            t = (double) getTickCount();
+            // Se pinta lo detectado como piel
+            alienizada = pintarColorMediana(srcFrame, mediana);
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
+            putText(alienizada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
+            imshow("Alien",alienizada);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
         
     }
     else if (opcion==3) {     // Poster
+        Mat posterizada;
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
-            imshow("Poster",metodoPoster(srcFrame));
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            posterizada = metodoPoster(srcFrame);
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
+            putText(posterizada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
+            imshow("Poster",posterizada);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
     else if (opcion==4) {     // Dibu
+        Mat dibuizada;
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
-            imshow("Dibu",metodoDibu(srcFrame));
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            dibuizada = metodoDibu(srcFrame);
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
+            putText(dibuizada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
+            imshow("Dibu",dibuizada);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
@@ -109,30 +145,48 @@ int inicializarVideo(int opcion) {
         int k = 0;
         namedWindow("Distorsion");
         createTrackbar("k1", "Distorsion", &k, 10, NULL);
+        Mat distorsionada;
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             int k1 = k-5;
             imshow("Original", srcFrame);
-            imshow("Distorsion",metodoDistorsion(srcFrame,k1));
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            distorsionada = metodoDistorsion(srcFrame,k1);
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
+            putText(distorsionada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
+            imshow("Distorsion",distorsionada);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
     else if (opcion==6) {     // Espejo
+        Mat espejada;
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
-            imshow("Espejo",metodoEspejo(srcFrame));
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            espejada = metodoEspejo(srcFrame);
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
+            putText(espejada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
+            imshow("Espejo",espejada);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
     else if (opcion==7) {     // Sepia
+        Mat sepiada;
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
-            imshow("Sepia",metodoSepia(srcFrame));
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            sepiada = metodoSepia(srcFrame);
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
+            putText(sepiada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
+            imshow("Sepia",sepiada);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }

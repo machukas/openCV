@@ -156,32 +156,33 @@ void kmedias(Mat src,Mat original)
     imshow("mierdapati", src);
      waitKey();
 }
-Mat pruebaMediana(Mat src, Mat completa){
-    
+Vec3b obtenerMediana(Mat srcFrame){
     // Se convierte la imagen de entrada en hsv
-    cvtColor(src, src, CV_BGR2HSV);
-    cvtColor(completa, completa, CV_BGR2HSV);
+    cvtColor(srcFrame, srcFrame, CV_BGR2HSV);
     
     Vec3b negro(0,0,0);
     Vec3b actual;
     vector<int> h,s,v;
-    for( int y = 0; y < src.rows; y++ ){
-        for( int x = 0; x < src.cols; x++ ){
-            actual =src.at<Vec3b>(x,y);
+    for( int y = 0; y < srcFrame.rows; y++ ){
+        for( int x = 0; x < srcFrame.cols; x++ ){
+            actual = srcFrame.at<Vec3b>(x,y);
             if (actual[0]!=negro[0]&&actual[1]!=negro[1]&&actual[2]!=negro[2]) {
-                h.push_back(src.at<Vec3b>(x,y)[0]);
-                s.push_back(src.at<Vec3b>(x,y)[1]);
-                v.push_back(src.at<Vec3b>(x,y)[2]);
+                h.push_back(srcFrame.at<Vec3b>(x,y)[0]);
+                s.push_back(srcFrame.at<Vec3b>(x,y)[1]);
+                v.push_back(srcFrame.at<Vec3b>(x,y)[2]);
             }
         }
     }
     
-    printf("Pixeles no negros = %lu\n", h.size());
+    cvtColor(srcFrame, srcFrame, CV_HSV2BGR);
+    
+    //printf("Pixeles no negros = %lu\n", h.size());
     
     sort(h.begin(),h.end());
     sort(s.begin(),s.end());
     sort(v.begin(),v.end());
     
+    /*
     printf("Pixeles ordenados = %d\n", h.at(2));
     printf("Pixeles ordenados = %d\n", h.at(3));
     printf("Pixeles ordenados = %d\n", h.at(4));
@@ -190,36 +191,34 @@ Mat pruebaMediana(Mat src, Mat completa){
     printf("mediana de h = %d\n", h.at(h.size()/2));
     printf("mediana de s = %d\n", s.at(s.size()/2));
     printf("mediana de v = %d\n", v.at(v.size()/2));
-    
+    */
     Vec3b mediana(h.at(h.size()/2),s.at(s.size()/2),v.at(v.size()/2));
-    
+    return mediana;
+}
+
+Mat pintarColorMediana(Mat srcFrame,Vec3b mediana){
+    Mat dstFrame;
+    cvtColor(srcFrame, dstFrame, CV_BGR2HSV);
     bool seParece[3];
     Vec3b verde(40,100,55);
-    for( int y = 0; y < completa.rows; y++ ){
-        for( int x = 0; x < completa.cols; x++ ){
+    for( int y = 0; y < dstFrame.rows; y++ ){
+        for( int x = 0; x < dstFrame.cols; x++ ){
             for (int c = 0; c < 3; c++) { // Se parecen los 3 valores?
-                if (abs(completa.at<Vec3b>(x,y)[c]-mediana[c])<50) {
+                if (abs(dstFrame.at<Vec3b>(x,y)[c]-mediana[c])<50) {
                     seParece[c] = true;
                 }
             }
             if (seParece[0]&&seParece[1]&&seParece[2]) {
-            //    for (int c = 0; c < 3; c++) { // Se transforman los 3 valores
-                    completa.at<Vec3b>(x,y)[0]+=verde[0];
-                completa.at<Vec3b>(x,y)[1]+=verde[1];
+                //    for (int c = 0; c < 3; c++) { // Se transforman los 3 valores
+                dstFrame.at<Vec3b>(x,y)[0]+=verde[0];
+                dstFrame.at<Vec3b>(x,y)[1]+=verde[1];
                 
-                    }
+            }
             //}
             seParece[0] = false;seParece[1] = false;seParece[2] = false;
         }
     }
-    
     // Se convierte la imagen de salida en rgb
-    cvtColor(src, src, CV_HSV2BGR);
-    cvtColor(completa, completa, CV_HSV2BGR);
-    return completa;
-    
-    /*
-     
-     */
-    
+    cvtColor(dstFrame, dstFrame, CV_HSV2BGR);
+    return dstFrame;
 }
