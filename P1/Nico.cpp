@@ -78,7 +78,14 @@ int inicializarVideo(int opcion) {
         }
         //cvtColor(frameWithFace, frameWithFace, CV_BGR2HSV);
         //kmedias(frameWithFace,srcFrame);
-        imshow("reza",pruebaMediana(frameWithFace,srcFrame));
+        for (; ; ) {
+            // Se extrae un nuevo fotograma
+            cap >> srcFrame;
+            imshow("Original", srcFrame);
+            imshow("Alien",pruebaMediana(frameWithFace,srcFrame));
+            if (waitKey(30)>=0) { destroyAllWindows();  break; }
+        }
+        
     }
     else if (opcion==3) {     // Poster
         for (; ; ) {
