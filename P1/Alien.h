@@ -18,7 +18,10 @@ using namespace cv;
 
 Mat faceDetection(Mat frame);
 
-Mat pruebaMediana(Mat src,Mat completa);
+// Este metodo
+Vec3b obtenerMediana(Mat srcFrame);
+
+Mat pintarColorMediana(Mat srcFrame,Vec3b mediana);
 
 void kmedias(Mat src,Mat original);
 
