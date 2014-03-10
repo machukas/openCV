@@ -12,6 +12,10 @@
 using namespace cv;
 using namespace std;
 
+/**
+ * Metodo que reduce el numero de colores presentes en una imagen [image] a 
+ * partir de un factor de reducción [div] que opera entre 1 y 255.
+ */
 void reduce_color(cv::Mat &image, int div) {
     cvtColor(image, image, CV_BGR2HSV);
     int nl = image.rows;
@@ -28,6 +32,11 @@ void reduce_color(cv::Mat &image, int div) {
     cvtColor(image, image, CV_HSV2BGR);
 }
 
+/**
+ * Devuelve una imagen identica a [srcFrame] pero con una reduccion del 
+ * numero de colores de la imagen que viene dada por el factor de reduccion
+ * [div].
+ */
 Mat metodoPoster(Mat srcFrame, int div) {
     if (div==0) { div=1; }
     cv::Mat output = srcFrame.clone();

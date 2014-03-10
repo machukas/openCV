@@ -10,7 +10,7 @@
 #include "Poster.h"
 #include "Dibu.h"
 #include "Distorsion.h"
-#include "espejo.h"
+#include "Vuelta.h"
 #include "Sepia.h"
 
 using namespace cv;
@@ -26,7 +26,7 @@ int menu() {
     printf("Opcion 3: Poster\n");
     printf("Opcion 4: Dibu\n");
     printf("Opcion 5: Distorsion\n");
-    printf("Opcion 6: Vuelta\n");
+    printf("Opcion 6: Vuelta 180 grados\n");
     printf("Opcion 7: Sepia\n");
     printf("Opcion 8: Tunel\n\n");
     printf("Ingrese una opcion (0 para salir) >> ");
@@ -174,7 +174,7 @@ int inicializarVideo(int opcion) {
             cap >> srcFrame;
             imshow("Original", srcFrame);
             t = (double) getTickCount();
-            espejada = metodoEspejo(srcFrame);
+            espejada = metodoVuelta(srcFrame);
             t = ((double)getTickCount()-t)/getTickFrequency();
             sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
             putText(espejada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
@@ -197,7 +197,7 @@ int inicializarVideo(int opcion) {
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
-    else if (opcion==8) {     // Distorsion
+    else if (opcion==8) {     // Tunel
         int k = -185;
         int a = 0,b = 64;
         namedWindow("Tunel");
@@ -208,20 +208,16 @@ int inicializarVideo(int opcion) {
             if (a>=0 && a<64 && b==64) {
                 k = k + 5;
                 a++;
-                printf("1\n");
             } else if (a==64) {
                 k = k + 5;
                 a = -1;
-                printf("2\n");
             } else if (b<=64 && b>0 && a==-1) {
                 k = k - 5;
                 b--;
-                printf("3\n");
             } else if (b==0) {
                 k = k - 5;
                 b = 64;
                 a = 0;
-                printf("4\n");
             }
             imshow("Original", srcFrame);
             t = (double) getTickCount();
