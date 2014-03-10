@@ -26,8 +26,9 @@ int menu() {
     printf("Opcion 3: Poster\n");
     printf("Opcion 4: Dibu\n");
     printf("Opcion 5: Distorsion\n");
-    printf("Opcion 6: Espejo\n");
-    printf("Opcion 7: Sepia\n\n");
+    printf("Opcion 6: Vuelta\n");
+    printf("Opcion 7: Sepia\n");
+    printf("Opcion 8: Tunel\n\n");
     printf("Ingrese una opcion (0 para salir) >> ");
     scanf("%d",&opcion);
     return opcion;
@@ -113,12 +114,15 @@ int inicializarVideo(int opcion) {
     }
     else if (opcion==3) {     // Poster
         Mat posterizada;
+        namedWindow("Poster");
+        int div = 32;
+        createTrackbar("color", "Poster", &div, 255, NULL);
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
             t = (double) getTickCount();
-            posterizada = metodoPoster(srcFrame);
+            posterizada = metodoPoster(srcFrame,div);
             t = ((double)getTickCount()-t)/getTickFrequency();
             sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
             putText(posterizada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
@@ -128,12 +132,15 @@ int inicializarVideo(int opcion) {
     }
     else if (opcion==4) {     // Dibu
         Mat dibuizada;
+        namedWindow("Dibu");
+        int div = 32;
+        createTrackbar("color", "Dibu", &div, 255, NULL);
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
             imshow("Original", srcFrame);
             t = (double) getTickCount();
-            dibuizada = metodoDibu(srcFrame);
+            dibuizada = metodoDibu(srcFrame,div);
             t = ((double)getTickCount()-t)/getTickFrequency();
             sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
             putText(dibuizada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
@@ -144,12 +151,12 @@ int inicializarVideo(int opcion) {
     else if (opcion==5) {     // Distorsion
         int k = 0;
         namedWindow("Distorsion");
-        createTrackbar("k1", "Distorsion", &k, 10, NULL);
+        createTrackbar("k1", "Distorsion", &k, 20, NULL);
         Mat distorsionada;
         for (; ; ) {
             // Se extrae un nuevo fotograma
             cap >> srcFrame;
-            int k1 = k-5;
+            int k1 = k-10;
             imshow("Original", srcFrame);
             t = (double) getTickCount();
             distorsionada = metodoDistorsion(srcFrame,k1);
@@ -160,7 +167,7 @@ int inicializarVideo(int opcion) {
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
-    else if (opcion==6) {     // Espejo
+    else if (opcion==6) {     // Vuelta
         Mat espejada;
         for (; ; ) {
             // Se extrae un nuevo fotograma
@@ -171,7 +178,7 @@ int inicializarVideo(int opcion) {
             t = ((double)getTickCount()-t)/getTickFrequency();
             sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
             putText(espejada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
-            imshow("Espejo",espejada);
+            imshow("Vuelta",espejada);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
@@ -190,6 +197,42 @@ int inicializarVideo(int opcion) {
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
+    else if (opcion==8) {     // Distorsion
+        int k = -185;
+        int a = 0,b = 64;
+        namedWindow("Tunel");
+        Mat distorsionada;
+        for (; ; ) {
+            // Se extrae un nuevo fotograma
+            cap >> srcFrame;
+            if (a>=0 && a<64 && b==64) {
+                k = k + 5;
+                a++;
+                printf("1\n");
+            } else if (a==64) {
+                k = k + 5;
+                a = -1;
+                printf("2\n");
+            } else if (b<=64 && b>0 && a==-1) {
+                k = k - 5;
+                b--;
+                printf("3\n");
+            } else if (b==0) {
+                k = k - 5;
+                b = 64;
+                a = 0;
+                printf("4\n");
+            }
+            imshow("Original", srcFrame);
+            t = (double) getTickCount();
+            distorsionada = metodoDistorsion(srcFrame,k);
+            t = ((double)getTickCount()-t)/getTickFrequency();
+            sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
+            putText(distorsionada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
+            imshow("Tunel",distorsionada);
+            if (waitKey(30)>=0) { destroyAllWindows();  break; }
+        }
+    }
     return 0;
 }
 
@@ -201,6 +244,7 @@ int opciones(int opcion) {
     else if (opcion==5) { inicializarVideo(5); }    // Distorsion
     else if (opcion==6) { inicializarVideo(6); }    // Espejo
     else if (opcion==7) { inicializarVideo(7); }    // Sepia
+    else if (opcion==8) { inicializarVideo(8); }    // Tunel
     else if (opcion==0) { return -1; }
     return 0;
 }

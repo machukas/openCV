@@ -13,20 +13,26 @@ using namespace cv;
 using namespace std;
 
 void color_reduce(cv::Mat &image, int div) {
+    cvtColor(image, image, CV_BGR2HSV);
     int nl = image.rows;
-    int nc = image.cols*image.channels();
+    int nc = image.cols;
+    vector<Mat> HSVChannels;
+    split(image, HSVChannels);
     for (int j=0; j<nl; j++) {
-        uchar* data = image.ptr<uchar>(j);
+        uchar* data = HSVChannels[2].ptr<uchar>(j);
         for (int i=0; i<nc; i++) {
-            data[i] = data[i]/div*div + div/2;
+            data[i] = data[i]/div*div;
         }
     }
+    merge(HSVChannels, image);
+    cvtColor(image, image, CV_HSV2BGR);
 }
 
-Mat metodoDibu(Mat srcFrame) {
+Mat metodoDibu(Mat srcFrame, int div) {
+    if (div==0) { div=1; }
     cv::Mat canny_output, output;    
     cv::Mat poster_output = srcFrame.clone();
-    color_reduce(poster_output, 32);
+    color_reduce(poster_output, div);
     Canny(srcFrame, canny_output, 35, 90);
     for (int i=0; i<canny_output.rows; i++) {
         uchar* data= canny_output.ptr<uchar>(i);

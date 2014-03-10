@@ -16,7 +16,7 @@ using namespace cv;
 
 //Metodos
 
-Mat metodoDibu(Mat frame);
+Mat metodoDibu(Mat frame, int div);
 
 void color_reduce(cv::Mat &input, int div);
 
