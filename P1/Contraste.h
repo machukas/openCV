@@ -18,7 +18,9 @@ using namespace cv;
 
 Mat metodoContraste(Mat frame,double alpha,int beta);
 
-Mat Histograma(Mat frame);
+Mat HistogramaRGB(Mat frame);
+
+Mat HistogramaBN(Mat frame);
 
 Mat ecualizarHistograma(Mat frame);
 
