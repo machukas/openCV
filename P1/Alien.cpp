@@ -32,6 +32,9 @@ Mat faceDetection(Mat frame){
     return dst;
 }
 
+/*
+ * Metodo no utilizado.
+ */
 void kmedias(Mat src,Mat original)
 {
     cvtColor(src, src, CV_BGR2HLS);
