@@ -12,32 +12,34 @@
 using namespace cv;
 using namespace std;
 
-/*void reduce_color(cv::Mat &input, cv::Mat &output, size_t div) {
-    if(input.data != output.data){
-        output.create(input.size(), input.type());
-    }
-    
-    uchar buffer[256];
-    for(size_t i = 0; i != 256; ++i){
-        buffer[i] = i / div * div + div / 2;
-    }
-    cv::Mat table(1, 256, CV_8U, buffer, sizeof(buffer));
-    cv::LUT(input, table, output);
-}*/
-
+/**
+ * Metodo que reduce el numero de colores presentes en una imagen [image] a 
+ * partir de un factor de reducción [div] que opera entre 1 y 255.
+ */
 void reduce_color(cv::Mat &image, int div) {
+    cvtColor(image, image, CV_BGR2HSV);
     int nl = image.rows;
-    int nc = image.cols*image.channels();
+    int nc = image.cols;
+    vector<Mat> HSVChannels;
+    split(image, HSVChannels);
     for (int j=0; j<nl; j++) {
-        uchar* data = image.ptr<uchar>(j);
+        uchar* data = HSVChannels[2].ptr<uchar>(j);
         for (int i=0; i<nc; i++) {
-            data[i] = data[i]/div*div + div/2;
+            data[i] = data[i]/div*div;
         }
     }
+    merge(HSVChannels, image);
+    cvtColor(image, image, CV_HSV2BGR);
 }
 
-Mat metodoPoster(Mat srcFrame) {
+/**
+ * Devuelve una imagen identica a [srcFrame] pero con una reduccion del 
+ * numero de colores de la imagen que viene dada por el factor de reduccion
+ * [div].
+ */
+Mat metodoPoster(Mat srcFrame, int div) {
+    if (div==0) { div=1; }
     cv::Mat output = srcFrame.clone();
-    reduce_color(output, 32);
+    reduce_color(output, div);
     return output;
 }

@@ -16,7 +16,7 @@ using namespace cv;
 
 //Metodos
 
-Mat metodoPoster(Mat src);
+Mat metodoPoster(Mat src, int div);
 
 void reduce_color(cv::Mat &input, int div);
 

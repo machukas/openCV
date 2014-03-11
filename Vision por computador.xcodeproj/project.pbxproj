@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20656BE018C9CC9200A02C19 /* espejo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20656BDE18C9CC9200A02C19 /* espejo.cpp */; };
+		20084D5A18CE274400569368 /* Vuelta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20084D5818CE274400569368 /* Vuelta.cpp */; };
 		20656BE318C9D47D00A02C19 /* Sepia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20656BE118C9D47D00A02C19 /* Sepia.cpp */; };
 		2085398D18C8E4C900A7A7CC /* Alien.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398218C8E4C900A7A7CC /* Alien.cpp */; };
 		2085398E18C8E4C900A7A7CC /* Contraste.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398418C8E4C900A7A7CC /* Contraste.cpp */; };
@@ -30,8 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		20656BDE18C9CC9200A02C19 /* espejo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = espejo.cpp; path = P1/espejo.cpp; sourceTree = SOURCE_ROOT; };
-		20656BDF18C9CC9200A02C19 /* espejo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = espejo.h; path = P1/espejo.h; sourceTree = SOURCE_ROOT; };
+		20084D5818CE274400569368 /* Vuelta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vuelta.cpp; path = P1/Vuelta.cpp; sourceTree = SOURCE_ROOT; };
+		20084D5918CE274400569368 /* Vuelta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vuelta.h; path = P1/Vuelta.h; sourceTree = SOURCE_ROOT; };
 		20656BE118C9D47D00A02C19 /* Sepia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sepia.cpp; path = P1/Sepia.cpp; sourceTree = SOURCE_ROOT; };
 		20656BE218C9D47D00A02C19 /* Sepia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sepia.h; path = P1/Sepia.h; sourceTree = SOURCE_ROOT; };
 		2085398218C8E4C900A7A7CC /* Alien.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Alien.cpp; path = P1/Alien.cpp; sourceTree = SOURCE_ROOT; };
@@ -66,17 +66,17 @@
 				2085398418C8E4C900A7A7CC /* Contraste.cpp */,
 				2085398618C8E4C900A7A7CC /* Dibu.cpp */,
 				2085398818C8E4C900A7A7CC /* Distorsion.cpp */,
-				20656BDE18C9CC9200A02C19 /* espejo.cpp */,
 				2085398A18C8E4C900A7A7CC /* Nico.cpp */,
 				2085398B18C8E4C900A7A7CC /* Poster.cpp */,
 				20656BE118C9D47D00A02C19 /* Sepia.cpp */,
+				20084D5818CE274400569368 /* Vuelta.cpp */,
 				2085398318C8E4C900A7A7CC /* Alien.h */,
 				2085398518C8E4C900A7A7CC /* Contraste.h */,
 				2085398718C8E4C900A7A7CC /* Dibu.h */,
 				2085398918C8E4C900A7A7CC /* Distorsion.h */,
-				20656BDF18C9CC9200A02C19 /* espejo.h */,
 				2085398C18C8E4C900A7A7CC /* Poster.h */,
 				20656BE218C9D47D00A02C19 /* Sepia.h */,
+				20084D5918CE274400569368 /* Vuelta.h */,
 			);
 			name = P1;
 			path = ../../Dropbox/Universidad/Cuarto/Pendientes/Vision_por_computador/Practicas/P1;
@@ -151,12 +151,12 @@
 			files = (
 				2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */,
 				2085398F18C8E4C900A7A7CC /* Dibu.cpp in Sources */,
+				20084D5A18CE274400569368 /* Vuelta.cpp in Sources */,
 				2085399118C8E4C900A7A7CC /* Nico.cpp in Sources */,
 				2085398E18C8E4C900A7A7CC /* Contraste.cpp in Sources */,
 				20656BE318C9D47D00A02C19 /* Sepia.cpp in Sources */,
 				2085399018C8E4C900A7A7CC /* Distorsion.cpp in Sources */,
 				2085398D18C8E4C900A7A7CC /* Alien.cpp in Sources */,
-				20656BE018C9CC9200A02C19 /* espejo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
