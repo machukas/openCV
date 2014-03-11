@@ -2,8 +2,8 @@
 //  Poster.h
 //  opencv
 //
-//  Created by Nicolas Landa Tejero-Garces on 26/02/14.
-//  Copyright (c) 2014 Nicolas Landa Tejero-Garces. All rights reserved.
+//  Created by Nicolas Landa Tejero-Garces & Adrián Marín Colás
+//  Copyright (c) 2014. All rights reserved.
 //
 
 #ifndef __opencv__Poster__

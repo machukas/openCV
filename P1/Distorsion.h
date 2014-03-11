@@ -2,8 +2,8 @@
 //  Distorsion.h
 //  Vision por computador
 //
-//  Created by Adrián Marín Colás on 06/03/14.
-//  Copyright (c) 2014 Adrian Marin Colas. All rights reserved.
+//  Created by Nicolas Landa Tejero-Garces & Adrián Marín Colás
+//  Copyright (c) 2014. All rights reserved.
 //
 
 #ifndef __Vision_por_computador__Distorsion__

@@ -2,6 +2,10 @@
  *  BIBLIOGRAFIA:
  *      - Tutoriales opencv.
  *      - Mastering opencv with practical computer vision projects (ISBN: 1849517827)
+ *      - stackoverflow
+ *
+ * Created by Nicolas Landa Tejero-Garces & Adrián Marín Colás
+ * Copyright (c) 2014. All rights reserved.
  */
 
 #include <opencv2/opencv.hpp>
