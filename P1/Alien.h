@@ -21,7 +21,7 @@ Mat faceDetection(Mat frame);
 // Este metodo
 Vec3b obtenerMediana(Mat srcFrame);
 
-Mat pintarColorMediana(Mat srcFrame,Vec3b mediana);
+Mat pintarColorMediana(Mat srcFrame,Vec3b mediana,int color,int rango);
 
 void kmedias(Mat src,Mat original);
 

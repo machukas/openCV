@@ -14,6 +14,10 @@ using namespace std;
 
 // Variables globales
 
+/*
+ * Porporciona una elipse vertical en el centro de la imagen, el resto
+ * sera de color negro.
+ */
 Mat faceDetection(Mat frame){
     Mat faceOutline = Mat::zeros(frame.size(), CV_8UC3);
     Scalar color = CV_RGB(255, 255, 255);
@@ -28,8 +32,12 @@ Mat faceDetection(Mat frame){
     return dst;
 }
 
+/*
+ * Metodo no utilizado.
+ */
 void kmedias(Mat src,Mat original)
 {
+    cvtColor(src, src, CV_BGR2HLS);
     //step 1 : map the src to the samples
     Mat samples(src.total(), 3, CV_32F);
     auto samples_ptr = samples.ptr<float>(0);
@@ -72,7 +80,8 @@ void kmedias(Mat src,Mat original)
             new_image_begin += 3; ++labels_ptr;
         }
     }
-     imshow("original", src);
+    
+     //imshow("original", src);
      imshow( "clustered image", new_image );
     
      cout << "R (default) = " << endl <<        centers           << endl << endl;
@@ -89,55 +98,70 @@ void kmedias(Mat src,Mat original)
     
     
     cout << "src.at<Vec3f>(400,200): " << endl;
-    cout << original.at<Vec3b>(300,200) << endl;
+    cout << src.at<Vec3b>(400,200) << endl;
     
     cout << "pixel: " << endl;
     cout << pixel << endl;
     
-    cout << "center: " << endl;
+    cout << "centro cluster 0: " << endl;
+    cout << centers.at<cv::Vec3f>(0) << endl;
+    cout << "centro cluster 1: " << endl;
     cout << centers.at<cv::Vec3f>(1) << endl;
+    cout << "centro cluster 2: " << endl;
+    cout << centers.at<cv::Vec3f>(2) << endl;
     
     cout << "icov: " << endl;
     cout << convarianzaInvertida << endl;
-    
-    cvtColor(original, original, CV_BGR2HSV);
-    
-    for( int y = 0; y < src.rows; y++ ){
-        for( int x = 0; x < src.cols; x++ )
+    /**
+    for( int x = 0; x < src.rows; x++ ){
+        for( int y = 0; y < src.cols; y++ )
         {
-            pixel[0] = (double)src.at<Vec3b>(y,x)[0];
-            pixel[1] = (double)src.at<Vec3b>(y,x)[1];
-            pixel[2] = (double)src.at<Vec3b>(y,x)[2];
+            pixel[0] = (double)src.at<Vec3b>(x,y)[0];
+            pixel[1] = (double)src.at<Vec3b>(x,y)[1];
+            pixel[2] = (double)src.at<Vec3b>(x,y)[2];
     double res = Mahalanobis(pixel, centers.at<cv::Vec3f>(0), convarianzaInvertida);
     double res1 = Mahalanobis(pixel, centers.at<cv::Vec3f>(1), convarianzaInvertida);
     double res2 = Mahalanobis(pixel, centers.at<cv::Vec3f>(2), convarianzaInvertida);
-            if (res1<res&&res1<res2) {
-                //printf("res=%f res1=%f res2=%f",res,res1,res2);
-                src.at<Vec3b>(y,x)[0]=0;
-                src.at<Vec3b>(y,x)[1]=0;
-                src.at<Vec3b>(y,x)[2]=0;            }
+            /*if (res1<res&&res1<res2) {
+                printf("res=%f res1=%f res2=%f\n",res,res1,res2);
+                src.at<Vec3b>(x,y)[0]=0;
+                src.at<Vec3b>(x,y)[1]=0;
+                src.at<Vec3b>(x,y)[2]=0;            }
     
     
-        }}
+        }}*/
+
+    pixel[0] = (double)src.at<Vec3b>(400,300)[0];
+    pixel[1] = (double)src.at<Vec3b>(400,300)[1];
+    pixel[2] = (double)src.at<Vec3b>(400,300)[2];
+    double res = Mahalanobis(pixel, centers.at<cv::Vec3f>(0), convarianzaInvertida);
+    double res1 = Mahalanobis(pixel, centers.at<cv::Vec3f>(1), convarianzaInvertida);
+    double res2 = Mahalanobis(pixel, centers.at<cv::Vec3f>(2), convarianzaInvertida);
+    printf("pixel = %f,%f,%f\n",pixel[0],pixel[1],pixel[2]);
+    printf("Mahalanobis a cluster 0 = %f\n",res);
+    printf("Mahalanobis a cluster 1 = %f\n",res1);
+    printf("Mahalanobis a cluster 2 = %f\n",res2);
     
-    int tipo0 = 0,tipo1=1,tipo2=0;
-    for( int y = 0; y < src.rows; y++ ){
-        for( int x = 0; x < src.cols; x++ ){
+
+
+    int tipo0 = 0,tipo1=0,tipo2=0;
+    for( int x = 0; x < src.rows; x++ ){
+        for( int y = 0; y < src.cols; y++ ){
             if (labels.at<int>(x, y)==0) {
                 tipo0++;
-                src.at<Vec3b>(y,x)[0]=0;
-                src.at<Vec3b>(y,x)[1]=0;
-                src.at<Vec3b>(y,x)[2]=0;}
+                src.at<Vec3b>(x,y)[0]=0;
+                src.at<Vec3b>(x,y)[1]=0;
+                src.at<Vec3b>(x,y)[2]=0;}
             else if (labels.at<int>(x, y)==1) {
                 tipo1++;
-                src.at<Vec3b>(y,x)[0]=0;
-                src.at<Vec3b>(y,x)[1]=255;
-                src.at<Vec3b>(y,x)[2]=0;}
+                src.at<Vec3b>(x,y)[0]=0;
+                src.at<Vec3b>(x,y)[1]=255;
+                src.at<Vec3b>(x,y)[2]=0;}
             else if (labels.at<int>(x, y)==2) {
                 tipo2++;
-                src.at<Vec3b>(y,x)[0]=0;
-                src.at<Vec3b>(y,x)[1]=0;
-                src.at<Vec3b>(y,x)[2]=255;}
+                src.at<Vec3b>(x,y)[0]=0;
+                src.at<Vec3b>(x,y)[1]=0;
+                src.at<Vec3b>(x,y)[2]=255;}
         }
     }
     
@@ -148,14 +172,19 @@ void kmedias(Mat src,Mat original)
     printf("tipo2=%d\n",tipo2);
     printf("total=%d\n",tipo0+tipo1+tipo2);
     
+    
     cout << "labels: " << endl;
-    cout << labels << endl;
+    cout << labels.at<int>(400,300) << endl;
     
-    
-    cvtColor(original, original, CV_HSV2BGR);
+    cvtColor(src, src, CV_HLS2BGR);
     imshow("mierdapati", src);
-     waitKey();
+    waitKey();
 }
+
+/*
+ * Calcula la mediana de los pixeles no negros en el espacio de color
+ * hsv, por separado.
+ */
 Vec3b obtenerMediana(Mat srcFrame){
     // Se convierte la imagen de entrada en hsv
     cvtColor(srcFrame, srcFrame, CV_BGR2HSV);
@@ -163,8 +192,8 @@ Vec3b obtenerMediana(Mat srcFrame){
     Vec3b negro(0,0,0);
     Vec3b actual;
     vector<int> h,s,v;
-    for( int y = 0; y < srcFrame.rows; y++ ){
-        for( int x = 0; x < srcFrame.cols; x++ ){
+    for( int x = 0; x < srcFrame.rows; x++ ){
+        for( int y = 0; y < srcFrame.cols; y++ ){
             actual = srcFrame.at<Vec3b>(x,y);
             if (actual[0]!=negro[0]&&actual[1]!=negro[1]&&actual[2]!=negro[2]) {
                 h.push_back(srcFrame.at<Vec3b>(x,y)[0]);
@@ -176,45 +205,41 @@ Vec3b obtenerMediana(Mat srcFrame){
     
     cvtColor(srcFrame, srcFrame, CV_HSV2BGR);
     
-    //printf("Pixeles no negros = %lu\n", h.size());
-    
     sort(h.begin(),h.end());
     sort(s.begin(),s.end());
     sort(v.begin(),v.end());
     
-    /*
-    printf("Pixeles ordenados = %d\n", h.at(2));
-    printf("Pixeles ordenados = %d\n", h.at(3));
-    printf("Pixeles ordenados = %d\n", h.at(4));
-    printf("Pixeles ordenados = %d\n", h.at(5));
-    printf("Pixeles ordenados = %d\n", h.at(10000));
     printf("mediana de h = %d\n", h.at(h.size()/2));
     printf("mediana de s = %d\n", s.at(s.size()/2));
     printf("mediana de v = %d\n", v.at(v.size()/2));
-    */
+    
     Vec3b mediana(h.at(h.size()/2),s.at(s.size()/2),v.at(v.size()/2));
     return mediana;
 }
 
-Mat pintarColorMediana(Mat srcFrame,Vec3b mediana){
+/*
+ * Anyade el tono proporcionado por parametro a los pixeles cuyos valores
+ * del espacio hsv estan dentro del rango introducido mediante los
+ * parametros rango y mediana:
+ * Si |f(i,j)-mediana|<rango ==> f(i,j)[h] = f(i,j)[h] + color.
+ */
+Mat pintarColorMediana(Mat srcFrame,Vec3b mediana,int color,int rango){
     Mat dstFrame;
     cvtColor(srcFrame, dstFrame, CV_BGR2HSV);
     bool seParece[3];
-    Vec3b verde(40,100,55);
-    for( int y = 0; y < dstFrame.rows; y++ ){
-        for( int x = 0; x < dstFrame.cols; x++ ){
+    Vec3b aSumar(0,0,0);
+    aSumar[0] = color;
+    for( int x = 0; x < dstFrame.rows; x++ ){
+        for( int y = 0; y < dstFrame.cols; y++ ){
             for (int c = 0; c < 3; c++) { // Se parecen los 3 valores?
-                if (abs(dstFrame.at<Vec3b>(x,y)[c]-mediana[c])<50) {
+                if (abs(dstFrame.at<Vec3b>(x,y)[c]-mediana[c])<rango) {
                     seParece[c] = true;
                 }
             }
-            if (seParece[0]&&seParece[1]&&seParece[2]) {
-                //    for (int c = 0; c < 3; c++) { // Se transforman los 3 valores
-                dstFrame.at<Vec3b>(x,y)[0]+=verde[0];
-                dstFrame.at<Vec3b>(x,y)[1]+=verde[1];
-                
+            if (seParece[0]&&seParece[1]&&seParece[2]){
+                dstFrame.at<Vec3b>(x,y)[0] += aSumar[0];
+                dstFrame.at<Vec3b>(x,y)[0] %= 255;
             }
-            //}
             seParece[0] = false;seParece[1] = false;seParece[2] = false;
         }
     }

@@ -53,8 +53,8 @@ int inicializarVideo(int opcion) {
         Mat contrastada,ecualizada;
         int alpha = 50, beta = 50;
         namedWindow("Contraste");
-        createTrackbar("Ganancia", "Contraste", &alpha, 100, NULL);
-        createTrackbar("Sesgo", "Contraste", &beta, 100, NULL);
+        createTrackbar("Ganancia", "Contraste", &alpha, 150);
+        createTrackbar("Sesgo", "Contraste", &beta, 100);
         namedWindow("Histograma imagen original", CV_WINDOW_AUTOSIZE );
         namedWindow("Histograma imagen ecualizada", CV_WINDOW_AUTOSIZE );
         for (; ; ) {
@@ -62,7 +62,7 @@ int inicializarVideo(int opcion) {
             cap >> srcFrame;
             imshow("Original", srcFrame);
             // Se muestra la imagen contrastada con alpha y beta
-            double gain = alpha / 50.0; // ganancia entre 0 y 2
+            double gain = alpha / 50.0; // ganancia entre 0 y 3
             int bias = beta-50;         // sesgo entre 0 y 50
             t = (double) getTickCount();
             contrastada = metodoContraste(srcFrame,gain,bias);
@@ -78,8 +78,8 @@ int inicializarVideo(int opcion) {
             putText(ecualizada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
             imshow("Ecualizada", ecualizada);
             // Se muestran los dos histogramas
-            imshow("Histograma imagen original",Histograma(srcFrame));
-            imshow("Histograma imagen ecualizada",Histograma(ecualizada));
+            imshow("Histograma imagen original",HistogramaBN(srcFrame));
+            imshow("Histograma imagen ecualizada",HistogramaBN(ecualizada));
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
     }
@@ -94,6 +94,10 @@ int inicializarVideo(int opcion) {
             imshow("Alien", frameWithFace);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
+        namedWindow("Alien");
+        int color = 0,rango = 30;
+        createTrackbar("Color", "Alien", &color, 255);
+        createTrackbar("Error", "Alien", &rango, 100);
         Mat alienizada;
         // Se obtiene la mediana del color de la piel de la cara
         Vec3b mediana = obtenerMediana(frameWithFace);
@@ -103,14 +107,14 @@ int inicializarVideo(int opcion) {
             imshow("Original", srcFrame);
             t = (double) getTickCount();
             // Se pinta lo detectado como piel
-            alienizada = pintarColorMediana(srcFrame, mediana);
+            alienizada = pintarColorMediana(srcFrame, mediana,color,rango);
             t = ((double)getTickCount()-t)/getTickFrequency();
             sprintf(tiempoEjecucion, "Tiempo de calculo = %f segundos.", (double)t);
             putText(alienizada, tiempoEjecucion, textOrg, fontFace, fontScale, Scalar::all(255), thickness,8);
             imshow("Alien",alienizada);
             if (waitKey(30)>=0) { destroyAllWindows();  break; }
         }
-        
+        //kmedias(frameWithFace, srcFrame);
     }
     else if (opcion==3) {     // Poster
         Mat posterizada;
