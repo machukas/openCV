@@ -12,7 +12,45 @@
 using namespace cv;
 using namespace std;
 
-Mat Histograma(Mat frame){
+Mat HistogramaBN(Mat frame){
+    Mat bnFrame;
+    cvtColor(frame, bnFrame, CV_BGR2GRAY);
+    
+    // Numero de valores
+    int histSize = 256;
+    
+    // Rango de valores
+    float range[] = { 0, 256 } ;
+    const float* histRange = { range };
+    
+    bool uniform = true; bool accumulate = false;
+    
+    Mat bn_hist;
+    
+    /// Calcula el histograma
+    calcHist( &bnFrame, 1, 0, Mat(), bn_hist, 1, &histSize, &histRange, uniform, accumulate );
+    
+    // Dibuja el histograma
+    int hist_w = 512; int hist_h = 400;
+    int bin_w = cvRound( (double) hist_w/histSize );
+    
+    Mat histImage( hist_h, hist_w, CV_8UC3, Scalar( 0,0,0) );
+    
+    /// Normaliza los resultados a [ 0, histImage.rows ]
+    normalize(bn_hist, bn_hist, 0, histImage.rows, NORM_MINMAX, -1, Mat() );
+    
+    /// Draw for each channel
+    for( int i = 1; i < histSize; i++ )
+    {
+        line( histImage, Point( bin_w*(i-1), hist_h - cvRound(bn_hist.at<float>(i-1)) ) ,
+             Point( bin_w*(i), hist_h - cvRound(bn_hist.at<float>(i)) ),
+             Scalar( 255, 0, 0), 2, 8, 0  );
+    }
+    
+    return histImage;
+}
+
+Mat HistogramaRGB(Mat frame){
     /// Separate the image in 3 places ( B, G and R )
     vector<Mat> bgr_planes;
     split( frame, bgr_planes );
