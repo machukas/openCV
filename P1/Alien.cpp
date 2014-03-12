@@ -209,9 +209,9 @@ Vec3b obtenerMediana(Mat srcFrame){
     sort(s.begin(),s.end());
     sort(v.begin(),v.end());
     
-    printf("mediana de h = %d\n", h.at(h.size()/2));
-    printf("mediana de s = %d\n", s.at(s.size()/2));
-    printf("mediana de v = %d\n", v.at(v.size()/2));
+    //printf("mediana de h = %d\n", h.at(h.size()/2));
+    //printf("mediana de s = %d\n", s.at(s.size()/2));
+    //printf("mediana de v = %d\n", v.at(v.size()/2));
     
     Vec3b mediana(h.at(h.size()/2),s.at(s.size()/2),v.at(v.size()/2));
     return mediana;

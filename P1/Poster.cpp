@@ -25,7 +25,7 @@ void reduce_color(cv::Mat &image, int div) {
     for (int j=0; j<nl; j++) {
         uchar* data = HSVChannels[2].ptr<uchar>(j);
         for (int i=0; i<nc; i++) {
-            data[i] = data[i]/div*div;
+            data[i] = (data[i]/div)*div;
         }
     }
     merge(HSVChannels, image);
