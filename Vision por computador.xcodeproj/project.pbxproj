@@ -13,7 +13,7 @@
 		2085398E18C8E4C900A7A7CC /* Contraste.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398418C8E4C900A7A7CC /* Contraste.cpp */; };
 		2085398F18C8E4C900A7A7CC /* Dibu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398618C8E4C900A7A7CC /* Dibu.cpp */; };
 		2085399018C8E4C900A7A7CC /* Distorsion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398818C8E4C900A7A7CC /* Distorsion.cpp */; };
-		2085399118C8E4C900A7A7CC /* Nico.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398A18C8E4C900A7A7CC /* Nico.cpp */; };
+		2085399118C8E4C900A7A7CC /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398A18C8E4C900A7A7CC /* Main.cpp */; };
 		2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398B18C8E4C900A7A7CC /* Poster.cpp */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +42,7 @@
 		2085398718C8E4C900A7A7CC /* Dibu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dibu.h; path = P1/Dibu.h; sourceTree = SOURCE_ROOT; };
 		2085398818C8E4C900A7A7CC /* Distorsion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Distorsion.cpp; path = P1/Distorsion.cpp; sourceTree = SOURCE_ROOT; };
 		2085398918C8E4C900A7A7CC /* Distorsion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Distorsion.h; path = P1/Distorsion.h; sourceTree = SOURCE_ROOT; };
-		2085398A18C8E4C900A7A7CC /* Nico.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Nico.cpp; path = P1/Nico.cpp; sourceTree = SOURCE_ROOT; };
+		2085398A18C8E4C900A7A7CC /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = P1/Main.cpp; sourceTree = SOURCE_ROOT; };
 		2085398B18C8E4C900A7A7CC /* Poster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Poster.cpp; path = P1/Poster.cpp; sourceTree = SOURCE_ROOT; };
 		2085398C18C8E4C900A7A7CC /* Poster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Poster.h; path = P1/Poster.h; sourceTree = SOURCE_ROOT; };
 		20D7011818B4963E00276136 /* Vision por computador */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Vision por computador"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +66,7 @@
 				2085398418C8E4C900A7A7CC /* Contraste.cpp */,
 				2085398618C8E4C900A7A7CC /* Dibu.cpp */,
 				2085398818C8E4C900A7A7CC /* Distorsion.cpp */,
-				2085398A18C8E4C900A7A7CC /* Nico.cpp */,
+				2085398A18C8E4C900A7A7CC /* Main.cpp */,
 				2085398B18C8E4C900A7A7CC /* Poster.cpp */,
 				20656BE118C9D47D00A02C19 /* Sepia.cpp */,
 				20084D5818CE274400569368 /* Vuelta.cpp */,
@@ -152,7 +152,7 @@
 				2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */,
 				2085398F18C8E4C900A7A7CC /* Dibu.cpp in Sources */,
 				20084D5A18CE274400569368 /* Vuelta.cpp in Sources */,
-				2085399118C8E4C900A7A7CC /* Nico.cpp in Sources */,
+				2085399118C8E4C900A7A7CC /* Main.cpp in Sources */,
 				2085398E18C8E4C900A7A7CC /* Contraste.cpp in Sources */,
 				20656BE318C9D47D00A02C19 /* Sepia.cpp in Sources */,
 				2085399018C8E4C900A7A7CC /* Distorsion.cpp in Sources */,
