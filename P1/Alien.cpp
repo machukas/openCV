@@ -238,7 +238,7 @@ Mat pintarColorMediana(Mat srcFrame,Vec3b mediana,int color,int rango){
             }
             if (seParece[0]&&seParece[1]&&seParece[2]){
                 dstFrame.at<Vec3b>(x,y)[0] += aSumar[0];
-                dstFrame.at<Vec3b>(x,y)[0] %= 255;
+                dstFrame.at<Vec3b>(x,y)[0] %= 180;
             }
             seParece[0] = false;seParece[1] = false;seParece[2] = false;
         }
