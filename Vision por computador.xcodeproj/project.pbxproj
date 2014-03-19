@@ -15,6 +15,7 @@
 		2085399018C8E4C900A7A7CC /* Distorsion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398818C8E4C900A7A7CC /* Distorsion.cpp */; };
 		2085399118C8E4C900A7A7CC /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398A18C8E4C900A7A7CC /* Main.cpp */; };
 		2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398B18C8E4C900A7A7CC /* Poster.cpp */; };
+		20D7CD8418D97CBE0037BD60 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20D7CD8218D97CBE0037BD60 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,8 @@
 		2085398B18C8E4C900A7A7CC /* Poster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Poster.cpp; path = P1/Poster.cpp; sourceTree = SOURCE_ROOT; };
 		2085398C18C8E4C900A7A7CC /* Poster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Poster.h; path = P1/Poster.h; sourceTree = SOURCE_ROOT; };
 		20D7011818B4963E00276136 /* Vision por computador */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Vision por computador"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20D7CD8218D97CBE0037BD60 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		20D7CD8318D97CBE0037BD60 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,7 @@
 		20D7010F18B4963E00276136 = {
 			isa = PBXGroup;
 			children = (
+				20D7CD8118D97CBE0037BD60 /* P2 */,
 				20A4E60118C8708A00468EC5 /* P1 */,
 				20D7011918B4963E00276136 /* Products */,
 			);
@@ -96,6 +100,15 @@
 				20D7011818B4963E00276136 /* Vision por computador */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		20D7CD8118D97CBE0037BD60 /* P2 */ = {
+			isa = PBXGroup;
+			children = (
+				20D7CD8218D97CBE0037BD60 /* main.cpp */,
+				20D7CD8318D97CBE0037BD60 /* main.h */,
+			);
+			path = P2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +164,7 @@
 			files = (
 				2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */,
 				2085398F18C8E4C900A7A7CC /* Dibu.cpp in Sources */,
+				20D7CD8418D97CBE0037BD60 /* main.cpp in Sources */,
 				20084D5A18CE274400569368 /* Vuelta.cpp in Sources */,
 				2085399118C8E4C900A7A7CC /* Main.cpp in Sources */,
 				2085398E18C8E4C900A7A7CC /* Contraste.cpp in Sources */,
