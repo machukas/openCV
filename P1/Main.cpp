@@ -67,7 +67,7 @@ int inicializarVideo(int opcion) {
             imshow("Original", srcFrame);
             // Se muestra la imagen contrastada con alpha y beta
             double gain = alpha / 50.0; // ganancia entre 0 y 3
-            int bias = beta-50;         // sesgo entre 0 y 50
+            int bias = beta-50;         // sesgo entre [-50,50]
             t = (double) getTickCount();
             contrastada = metodoContraste(srcFrame,gain,bias);
             t = ((double)getTickCount()-t)/getTickFrequency();
