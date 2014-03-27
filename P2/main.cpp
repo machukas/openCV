@@ -78,6 +78,8 @@ int main( int argc, char** argv )
     Mat outputX = Mat::zeros(image_gray.size(),image_gray.type());
     Mat outputY = Mat::zeros(image_gray.size(),image_gray.type());
     Mat output = Mat::zeros(image_gray.size(),image_gray.type());
+    Mat test = Mat::zeros(image_gray.size(),image_gray.type());
+    Mat angle = Mat::zeros(image_gray.size(),image_gray.type());;
     
     sobel_filtering(image_gray,outputX,outputY,output);
     
@@ -85,8 +87,13 @@ int main( int argc, char** argv )
     imshow("test", outputX);
     namedWindow("test2");
     imshow("test2", outputY);
+    
+    
+    cartToPolar(outputX, outputY, test, angle);
+    
+    
     namedWindow("test3");
-    imshow("test3", output);
+    imshow("test3", test);
     
     //addWeighted(outputX, 0.5, outputY, 0.5, 0, output);
     //namedWindow("test3");
