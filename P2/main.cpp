@@ -31,44 +31,17 @@ using namespace std;
             //outputX.at<int>(x,y) = outputX.at<int>(x,y)/2 + 128;
         }
     }
-    
 }*/
 
-void gradiente(Mat image_gray, Mat &outputX, Mat &outputY) {
+void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &test, Mat &angle) {
     
     GaussianBlur(image_gray, image_gray, Size(3,3), 0);
     Sobel(image_gray, outputX, CV_32F, 1, 0, 3, 0.75);
     Sobel(image_gray, outputY, CV_32F, 0, 1, 3, 0.75);
     
-    double min, max;
-    minMaxLoc(outputX, &min, &max);
-    //outputX.convertTo(outputX, CV_32F, 0.5, 128);
-    printf("%2.2f %2.2f\n",min,max);
-    minMaxLoc(outputY, &min, &max);
-    //outputY.convertTo(outputY, CV_32F, 0.5, 128);
-    printf("%2.2f %2.2f\n",min,max);
-}
-
-
-
-void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &output) {
-    
-    Mat modulo;
-    gradiente(image_gray,outputX,outputY);
-    
-    for (int x=0; x<image_gray.rows; x++) {
-        for (int y=0; y<image_gray.cols; y++) {
-            modulo = sqrt(pow(outputX.at<float>(x,y),2) + pow(outputY.at<float>(x,y),2));
-        }
-    }
-    
-    convertScaleAbs(outputX, outputX,0.5,128);
-    convertScaleAbs(outputY, outputY);
-    
-    
+    cartToPolar(outputX, outputY, test, angle);
     
 }
-
 
 int main( int argc, char** argv )
 {
@@ -78,27 +51,24 @@ int main( int argc, char** argv )
     Mat outputX = Mat::zeros(image_gray.size(),image_gray.type());
     Mat outputY = Mat::zeros(image_gray.size(),image_gray.type());
     Mat output = Mat::zeros(image_gray.size(),image_gray.type());
-    Mat test = Mat::zeros(image_gray.size(),image_gray.type());
+    Mat modulo = Mat::zeros(image_gray.size(),image_gray.type());
     Mat angle = Mat::zeros(image_gray.size(),image_gray.type());;
     
-    sobel_filtering(image_gray,outputX,outputY,output);
+    sobel_filtering(image_gray,outputX,outputY,modulo,angle);
     
-    namedWindow("test");
-    imshow("test", outputX);
-    namedWindow("test2");
-    imshow("test2", outputY);
+    angle = (angle/3.14)*0.5;
+    outputX = (outputX/2)+128;
+    outputY = (outputY/2)+128;
+    modulo = modulo/4;
     
-    
-    cartToPolar(outputX, outputY, test, angle);
-    
-    
-    namedWindow("test3");
-    imshow("test3", test);
-    
-    //addWeighted(outputX, 0.5, outputY, 0.5, 0, output);
-    //namedWindow("test3");
-    //imshow("test3", output);
-    
+    namedWindow("GradienteX");
+    imshow("GradienteX", (outputX/255));
+    namedWindow("GradienteY");
+    imshow("GradienteY", (outputY/255));
+    namedWindow("Orientacion");
+    imshow("Orientacion", angle);
+    namedWindow("Modulo");
+    imshow("Modulo", (modulo/255));
     
     for (;;) {
         if (waitKey(30)>=0) { destroyAllWindows();  break; }
