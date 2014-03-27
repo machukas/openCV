@@ -253,10 +253,10 @@ int opciones(int opcion) {
     return 0;
 }
 
-int main( int argc, char** argv )
+/*int main( int argc, char** argv )
 {
     while (opciones(menu())!=-1) {
         ;
     }
-}
+}*/
 
