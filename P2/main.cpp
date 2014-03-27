@@ -33,13 +33,13 @@ using namespace std;
     }
 }*/
 
-void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &test, Mat &angle) {
+void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &modulo, Mat &angle) {
     
     GaussianBlur(image_gray, image_gray, Size(3,3), 0);
-    Sobel(image_gray, outputX, CV_32F, 1, 0, 3, 0.75);
-    Sobel(image_gray, outputY, CV_32F, 0, 1, 3, 0.75);
+    Sobel(image_gray, outputX, CV_32F, 1, 0, 3);
+    Sobel(image_gray, outputY, CV_32F, 0, 1, 3);
     
-    cartToPolar(outputX, outputY, test, angle);
+    cartToPolar(outputX, outputY, modulo, angle);
     
 }
 
@@ -72,6 +72,18 @@ int main( int argc, char** argv )
     
     for (;;) {
         if (waitKey(30)>=0) { destroyAllWindows();  break; }
+    }
+    
+    // Parte 2
+    
+    Mat src = image.clone();
+    
+    for (int x=1; x<src.rows-1; x++) {
+        for (int y=1; y<src.cols-1; y++) {
+            if (modulo.at<float>(x, y) >= 100) {
+                
+            }
+        }
     }
     
 }
