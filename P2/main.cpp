@@ -74,4 +74,16 @@ int main( int argc, char** argv )
         if (waitKey(30)>=0) { destroyAllWindows();  break; }
     }
     
+    // Parte 2
+    
+    Mat src = image.clone();
+    
+    for (int x=1; x<src.rows-1; x++) {
+        for (int y=1; y<src.cols-1; y++) {
+            if (modulo.at<float>(x, y) >= 100) {
+                
+            }
+        }
+    }
+    
 }
