@@ -78,9 +78,13 @@ int main( int argc, char** argv )
     
     Mat src = image.clone();
     
-    for (int x=1; x<src.rows-1; x++) {
-        for (int y=1; y<src.cols-1; y++) {
-            if (modulo.at<float>(x, y) >= 100) {
+    for (int i=1; i<src.rows-1; i++) {
+        for (int j=1; j<src.cols-1; j++) {
+            if (modulo.at<float>(i, j) >= 40) {
+                int x = j-src.cols/2;
+                int y = src.rows/2 -i;
+                float theta = angle.at<float>(i,j);
+                float ro = x*cos(theta) + y*sin(theta);
                 
             }
         }
