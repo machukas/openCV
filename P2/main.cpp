@@ -33,20 +33,20 @@ using namespace std;
     }
 }*/
 
-void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &test, Mat &angle) {
+void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &modulo, Mat &angle) {
     
     GaussianBlur(image_gray, image_gray, Size(3,3), 0);
-    Sobel(image_gray, outputX, CV_32F, 1, 0, 3, 0.75);
-    Sobel(image_gray, outputY, CV_32F, 0, 1, 3, 0.75);
+    Sobel(image_gray, outputX, CV_32F, 1, 0, 3);
+    Sobel(image_gray, outputY, CV_32F, 0, 1, 3);
     
-    cartToPolar(outputX, outputY, test, angle);
+    cartToPolar(outputX, outputY, modulo, angle);
     
 }
 
 int main( int argc, char** argv )
 {
     Mat image_gray;
-    Mat image = imread("/Users/amarincolas/Desktop/poster.pgm");
+    Mat image = imread("/Users/machukas/Desktop/poster.pgm");
     cvtColor(image, image_gray, CV_BGR2GRAY);
     Mat outputX = Mat::zeros(image_gray.size(),image_gray.type());
     Mat outputY = Mat::zeros(image_gray.size(),image_gray.type());
