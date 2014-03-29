@@ -42,6 +42,9 @@ void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &modulo, Ma
     cartToPolar(outputX, outputY, modulo, angle);
     
 }
+void votarRecta(int rectas[], int i,int j,float ro,float theta){
+    x = (ro-(src.rows/2)*sin(theta))/cos(theta);
+}
 
 int main( int argc, char** argv )
 {
@@ -77,6 +80,7 @@ int main( int argc, char** argv )
     // Parte 2
     
     Mat src = image.clone();
+    float rectas[src.cols];
     
     for (int i=1; i<src.rows-1; i++) {
         for (int j=1; j<src.cols-1; j++) {
