@@ -86,6 +86,10 @@ int main( int argc, char** argv )
                 float theta = angle.at<float>(i,j);
                 float ro = x*cos(theta) + y*sin(theta);
                 
+                x = (ro-(src.rows/2)*sin(theta))/cos(theta);
+                
+                
+                
             }
         }
     }
