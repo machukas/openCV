@@ -34,17 +34,25 @@ using namespace std;
 }*/
 
 void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &modulo, Mat &angle) {
-    
     GaussianBlur(image_gray, image_gray, Size(3,3), 0);
     Sobel(image_gray, outputX, CV_32F, 1, 0, 3);
     Sobel(image_gray, outputY, CV_32F, 0, 1, 3);
-    
     cartToPolar(outputX, outputY, modulo, angle);
-    
 }
-void votarRecta(int rectas[], int i,int j,float ro,float theta, int rows){
-    int x = (int)(ro-(rows/2)*sin(theta))/cos(theta);
-    rectas[x] = rectas[x] + 1;
+
+void votarRecta(int rectas[], int x, int y, int i, int j, float theta, Mat src){
+    // y=mx+n
+    if (fmod(theta,(CV_PI/2))>0,25) {
+        float m = tan((CV_PI/2)-theta);
+        float n = y-m*x;
+        // interseccion de y=mx+n con y=0
+        int corte = -n/m;
+        corte = corte + src.cols/2;
+        if (corte<src.cols && corte>=0) {
+            rectas[corte] = rectas[corte] + 1;
+            //line(src, Point(j,i), Point(corte,src.rows/2), CV_RGB(255,0,0));
+        }
+    }
 }
 
 int main( int argc, char** argv )
@@ -57,7 +65,7 @@ int main( int argc, char** argv )
     Mat outputY = Mat::zeros(image_gray.size(),image_gray.type());
     Mat output = Mat::zeros(image_gray.size(),image_gray.type());
     Mat modulo = Mat::zeros(image_gray.size(),image_gray.type());
-    Mat angle = Mat::zeros(image_gray.size(),image_gray.type());;
+    Mat angle = Mat::zeros(image_gray.size(),image_gray.type());
     
     sobel_filtering(image_gray,outputX,outputY,modulo,angle);
     
@@ -81,25 +89,37 @@ int main( int argc, char** argv )
     
     // Parte 2
     
-    Mat src = image.clone();
-    int rectas[src.cols];
     
+    Mat src = imread("/Users/amarincolas/Desktop/pasillo3.pgm");
+    cvtColor(src, image_gray, CV_BGR2GRAY);
+    
+    sobel_filtering(image_gray,outputX,outputY,modulo,angle);
+    
+    int rectas[src.cols];
     for (int n=0; n<src.cols-1; ++n)
         rectas[n] = 0;
     
     for (int i=1; i<src.rows-1; i++) {
         for (int j=1; j<src.cols-1; j++) {
-            if (modulo.at<float>(i, j) >= 40) {
-                int x = j-src.cols/2;
-                int y = src.rows/2 -i;
+            if (modulo.at<float>(i, j) >= 70) {
+                int x = j-src.cols/2;       // eje x en funcion del centro
+                int y = src.rows/2 -i;      // eje y en funcion del centro
                 float theta = angle.at<float>(i,j);
-                float ro = x*cos(theta) + y*sin(theta);
-                votarRecta(rectas, i, j, ro, theta, src.rows);
-                for (int n=0; n<src.cols-1; ++n)
-                    cout << rectas[n] << ' ';
-                cout << '\n';
+                votarRecta(rectas, x, y, i, j, theta, src);
             }
         }
+    }
+
+    int best=0;
+    for (int a=1; a<src.cols-1; a++) {
+        if (rectas[a]>rectas[best]) { best=a; }
+    }
+    circle(src, Point(best,src.rows/2), 4, CV_RGB(0,255,0));
+    namedWindow("Pasillo");
+    imshow("Pasillo", src);
+    
+    for (;;) {
+        if (waitKey(30)>=0) { destroyAllWindows();  break; }
     }
     
 }
