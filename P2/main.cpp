@@ -42,14 +42,16 @@ void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &modulo, Ma
     cartToPolar(outputX, outputY, modulo, angle);
     
 }
-void votarRecta(int rectas[], int i,int j,float ro,float theta){
-    x = (ro-(src.rows/2)*sin(theta))/cos(theta);
+void votarRecta(int rectas[], int i,int j,float ro,float theta, int rows){
+    int x = (int)(ro-(rows/2)*sin(theta))/cos(theta);
+    rectas[x] = rectas[x] + 1;
 }
 
 int main( int argc, char** argv )
 {
     Mat image_gray;
-    Mat image = imread("/Users/machukas/Desktop/poster.pgm");
+    Mat image = imread("/Users/amarincolas/Desktop/poster.pgm");
+    //Mat image = imread("/Users/machukas/Desktop/poster.pgm");
     cvtColor(image, image_gray, CV_BGR2GRAY);
     Mat outputX = Mat::zeros(image_gray.size(),image_gray.type());
     Mat outputY = Mat::zeros(image_gray.size(),image_gray.type());
@@ -80,7 +82,10 @@ int main( int argc, char** argv )
     // Parte 2
     
     Mat src = image.clone();
-    float rectas[src.cols];
+    int rectas[src.cols];
+    
+    for (int n=0; n<src.cols-1; ++n)
+        rectas[n] = 0;
     
     for (int i=1; i<src.rows-1; i++) {
         for (int j=1; j<src.cols-1; j++) {
@@ -89,11 +94,10 @@ int main( int argc, char** argv )
                 int y = src.rows/2 -i;
                 float theta = angle.at<float>(i,j);
                 float ro = x*cos(theta) + y*sin(theta);
-                
-                x = (ro-(src.rows/2)*sin(theta))/cos(theta);
-                
-                
-                
+                votarRecta(rectas, i, j, ro, theta, src.rows);
+                for (int n=0; n<src.cols-1; ++n)
+                    cout << rectas[n] << ' ';
+                cout << '\n';
             }
         }
     }
