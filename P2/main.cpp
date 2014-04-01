@@ -2,8 +2,8 @@
 //  main.cpp
 //  Vision por computador
 //
-//  Created by Nicolas Landa Tejero-Garces on 19/03/14.
-//  Copyright (c) 2014 Adrian Marin Colas. All rights reserved.
+//  Nicolas Landa Tejero-Garces & Adrian Marin Colas
+//  All rights reserved.
 //
 
 #include <opencv2/opencv.hpp>
@@ -33,15 +33,24 @@ using namespace std;
     }
 }*/
 
+/**
+ * Aplica el operador sobel a una imagen [image_gray] para obtener sus gradientes, horizontal, 
+ * vertical, modulo y orientacion. Previamente se le aplica un GaussianBlur.
+ */
 void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &modulo, Mat &angle) {
     GaussianBlur(image_gray, image_gray, Size(3,3), 0);
     Sobel(image_gray, outputX, CV_32F, 1, 0, 3);
     Sobel(image_gray, outputY, CV_32F, 0, 1, 3);
-    cartToPolar(outputX, outputY, modulo, angle);
+    cartToPolar(-outputX, -outputY, modulo, angle);
 }
 
+/**
+ * Guarda en un vector [rectas] de tamano el ancho de la imagen [src], el numero de votos
+ * que recibe cada pixel del horizonte (y=src.rows/2)de las rectas perpendiculares a los 
+ * gradientes de los contornos de la imagen.
+ * El punto con mayor numero de votos correspondera con el punto de fuga de la imagen.
+ */
 void votarRecta(int rectas[], int x, int y, int i, int j, float theta, Mat src){
-    // y=mx+n
     if (fmod(theta,(CV_PI/2))>0,25) {
         float m = tan((CV_PI/2)-theta);
         float n = y-m*x;
@@ -50,13 +59,25 @@ void votarRecta(int rectas[], int x, int y, int i, int j, float theta, Mat src){
         corte = corte + src.cols/2;
         if (corte<src.cols && corte>=0) {
             rectas[corte] = rectas[corte] + 1;
-            //line(src, Point(j,i), Point(corte,src.rows/2), CV_RGB(255,0,0));
+            /*
+             * Descomentar para visualizar las rectas perpendiculares al gradiente que
+             * votan para el calculo del punto de fuga.
+             *
+             * line(src, Point(j,i), Point(corte,src.rows/2), CV_RGB(255,0,0));
+             * imshow("Pasillo", src);
+             * for (;;) {
+             *   if (waitKey(30)>=0) { destroyAllWindows();  break; }
+            }*/
         }
     }
 }
 
-int main( int argc, char** argv )
-{
+int main( int argc, char** argv ) {
+    
+    ///////////////////////////////////////////////////////////////////////////
+    //////////////////////            Parte 1            //////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+    
     Mat image_gray;
     Mat image = imread("/Users/amarincolas/Desktop/poster.pgm");
     //Mat image = imread("/Users/machukas/Desktop/poster.pgm");
@@ -69,17 +90,21 @@ int main( int argc, char** argv )
     
     sobel_filtering(image_gray,outputX,outputY,modulo,angle);
     
-    angle = (angle/3.14)*0.5;
-    outputX = (outputX/2)+128;
-    outputY = (outputY/2)+128;
+    printf("%f %f\n",angle.at<float>(20,30),angle.at<float>(30.40));
+    
+    // Se modifican valores para su visualizacion
+    angle = (angle/CV_PI)*128;
+    outputX = (-outputX/2)+128;
+    outputY = (-outputY/2)+128;
     modulo = modulo/4;
     
+    // Se muestran los gradientes, modulo y orientacion
     namedWindow("GradienteX");
     imshow("GradienteX", (outputX/255));
     namedWindow("GradienteY");
     imshow("GradienteY", (outputY/255));
     namedWindow("Orientacion");
-    imshow("Orientacion", angle);
+    imshow("Orientacion", angle/255);
     namedWindow("Modulo");
     imshow("Modulo", (modulo/255));
     
@@ -87,18 +112,21 @@ int main( int argc, char** argv )
         if (waitKey(30)>=0) { destroyAllWindows();  break; }
     }
     
-    // Parte 2
+    ///////////////////////////////////////////////////////////////////////////
+    //////////////////////            Parte 2            //////////////////////
+    ///////////////////////////////////////////////////////////////////////////
     
-    
-    Mat src = imread("/Users/amarincolas/Desktop/pasillo3.pgm");
+    // Cargar imagen y calcular sus gradientes, orientacion ...
+    Mat src = imread("/Users/amarincolas/Desktop/pasillo1.pgm");
     cvtColor(src, image_gray, CV_BGR2GRAY);
-    
     sobel_filtering(image_gray,outputX,outputY,modulo,angle);
     
+    // Recta de votacion inicializarla a 0
     int rectas[src.cols];
     for (int n=0; n<src.cols-1; ++n)
         rectas[n] = 0;
     
+    // Algoritmo de votacion
     for (int i=1; i<src.rows-1; i++) {
         for (int j=1; j<src.cols-1; j++) {
             if (modulo.at<float>(i, j) >= 70) {
@@ -110,10 +138,13 @@ int main( int argc, char** argv )
         }
     }
 
+    // Obtener la posicion mas votada por el algoritmo
     int best=0;
     for (int a=1; a<src.cols-1; a++) {
         if (rectas[a]>rectas[best]) { best=a; }
     }
+    
+    // Marcar el punto de fuga en la imagen
     circle(src, Point(best,src.rows/2), 4, CV_RGB(0,255,0));
     namedWindow("Pasillo");
     imshow("Pasillo", src);
