@@ -16,6 +16,13 @@
 		2085399118C8E4C900A7A7CC /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398A18C8E4C900A7A7CC /* Main.cpp */; };
 		2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398B18C8E4C900A7A7CC /* Poster.cpp */; };
 		4244722618F51CB20033FD8D /* practica3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244722418F51CB20033FD8D /* practica3.cpp */; };
+		4244723418F5206C0033FD8D /* camera_calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244722918F5206C0033FD8D /* camera_calibration.cpp */; };
+		4244723518F5206C0033FD8D /* descriptor_extractor_matcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244722D18F5206C0033FD8D /* descriptor_extractor_matcher.cpp */; };
+		4244723618F5206C0033FD8D /* SURF_descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244722F18F5206C0033FD8D /* SURF_descriptor.cpp */; };
+		4244723718F5206C0033FD8D /* SURF_detector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244723018F5206C0033FD8D /* SURF_detector.cpp */; };
+		4244723818F5206C0033FD8D /* SURF_FlannMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244723118F5206C0033FD8D /* SURF_FlannMatcher.cpp */; };
+		4244723918F5206C0033FD8D /* SURF_Homography.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244723218F5206C0033FD8D /* SURF_Homography.cpp */; };
+		4244723A18F5206C0033FD8D /* matcher_simple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244723318F5206C0033FD8D /* matcher_simple.cpp */; };
 		42603BD218D97AE1006D6F2E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42603BD018D97AE1006D6F2E /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +57,16 @@
 		20D7011818B4963E00276136 /* Vision por computador */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Vision por computador"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4244722418F51CB20033FD8D /* practica3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = practica3.cpp; path = P3/practica3.cpp; sourceTree = SOURCE_ROOT; };
 		4244722518F51CB20033FD8D /* practica3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = practica3.h; path = P3/practica3.h; sourceTree = SOURCE_ROOT; };
+		4244722918F5206C0033FD8D /* camera_calibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = camera_calibration.cpp; sourceTree = "<group>"; };
+		4244722A18F5206C0033FD8D /* in_VID5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = in_VID5.xml; sourceTree = "<group>"; };
+		4244722B18F5206C0033FD8D /* out_camera_data.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out_camera_data.yml; sourceTree = "<group>"; };
+		4244722C18F5206C0033FD8D /* VID5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = VID5.xml; sourceTree = "<group>"; };
+		4244722D18F5206C0033FD8D /* descriptor_extractor_matcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = descriptor_extractor_matcher.cpp; path = P3/descriptor_extractor_matcher.cpp; sourceTree = SOURCE_ROOT; };
+		4244722F18F5206C0033FD8D /* SURF_descriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_descriptor.cpp; sourceTree = "<group>"; };
+		4244723018F5206C0033FD8D /* SURF_detector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_detector.cpp; sourceTree = "<group>"; };
+		4244723118F5206C0033FD8D /* SURF_FlannMatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_FlannMatcher.cpp; sourceTree = "<group>"; };
+		4244723218F5206C0033FD8D /* SURF_Homography.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_Homography.cpp; sourceTree = "<group>"; };
+		4244723318F5206C0033FD8D /* matcher_simple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = matcher_simple.cpp; path = P3/matcher_simple.cpp; sourceTree = SOURCE_ROOT; };
 		42603BD018D97AE1006D6F2E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = P2/main.cpp; sourceTree = SOURCE_ROOT; };
 		42603BD118D97AE1006D6F2E /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,12 +126,40 @@
 		4244722718F51CC60033FD8D /* P3 */ = {
 			isa = PBXGroup;
 			children = (
+				4244722818F5206C0033FD8D /* camera_calibration */,
+				4244722D18F5206C0033FD8D /* descriptor_extractor_matcher.cpp */,
+				4244722E18F5206C0033FD8D /* features2D */,
+				4244723318F5206C0033FD8D /* matcher_simple.cpp */,
 				4244722418F51CB20033FD8D /* practica3.cpp */,
 				4244722518F51CB20033FD8D /* practica3.h */,
 			);
 			name = P3;
 			path = P2;
 			sourceTree = "<group>";
+		};
+		4244722818F5206C0033FD8D /* camera_calibration */ = {
+			isa = PBXGroup;
+			children = (
+				4244722918F5206C0033FD8D /* camera_calibration.cpp */,
+				4244722A18F5206C0033FD8D /* in_VID5.xml */,
+				4244722B18F5206C0033FD8D /* out_camera_data.yml */,
+				4244722C18F5206C0033FD8D /* VID5.xml */,
+			);
+			name = camera_calibration;
+			path = P3/camera_calibration;
+			sourceTree = SOURCE_ROOT;
+		};
+		4244722E18F5206C0033FD8D /* features2D */ = {
+			isa = PBXGroup;
+			children = (
+				4244722F18F5206C0033FD8D /* SURF_descriptor.cpp */,
+				4244723018F5206C0033FD8D /* SURF_detector.cpp */,
+				4244723118F5206C0033FD8D /* SURF_FlannMatcher.cpp */,
+				4244723218F5206C0033FD8D /* SURF_Homography.cpp */,
+			);
+			name = features2D;
+			path = P3/features2D;
+			sourceTree = SOURCE_ROOT;
 		};
 		42603BCF18D97AA5006D6F2E /* P2 */ = {
 			isa = PBXGroup;
@@ -177,14 +222,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */,
+				4244723918F5206C0033FD8D /* SURF_Homography.cpp in Sources */,
 				2085398F18C8E4C900A7A7CC /* Dibu.cpp in Sources */,
 				42603BD218D97AE1006D6F2E /* main.cpp in Sources */,
+				4244723418F5206C0033FD8D /* camera_calibration.cpp in Sources */,
+				4244723A18F5206C0033FD8D /* matcher_simple.cpp in Sources */,
 				20084D5A18CE274400569368 /* Vuelta.cpp in Sources */,
 				2085399118C8E4C900A7A7CC /* Main.cpp in Sources */,
 				2085398E18C8E4C900A7A7CC /* Contraste.cpp in Sources */,
+				4244723718F5206C0033FD8D /* SURF_detector.cpp in Sources */,
 				4244722618F51CB20033FD8D /* practica3.cpp in Sources */,
+				4244723518F5206C0033FD8D /* descriptor_extractor_matcher.cpp in Sources */,
+				4244723818F5206C0033FD8D /* SURF_FlannMatcher.cpp in Sources */,
 				20656BE318C9D47D00A02C19 /* Sepia.cpp in Sources */,
 				2085399018C8E4C900A7A7CC /* Distorsion.cpp in Sources */,
+				4244723618F5206C0033FD8D /* SURF_descriptor.cpp in Sources */,
 				2085398D18C8E4C900A7A7CC /* Alien.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
