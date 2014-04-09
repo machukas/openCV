@@ -15,6 +15,7 @@
 		2085399018C8E4C900A7A7CC /* Distorsion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398818C8E4C900A7A7CC /* Distorsion.cpp */; };
 		2085399118C8E4C900A7A7CC /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398A18C8E4C900A7A7CC /* Main.cpp */; };
 		2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398B18C8E4C900A7A7CC /* Poster.cpp */; };
+		4244722618F51CB20033FD8D /* practica3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244722418F51CB20033FD8D /* practica3.cpp */; };
 		42603BD218D97AE1006D6F2E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42603BD018D97AE1006D6F2E /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,8 @@
 		2085398B18C8E4C900A7A7CC /* Poster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Poster.cpp; path = P1/Poster.cpp; sourceTree = SOURCE_ROOT; };
 		2085398C18C8E4C900A7A7CC /* Poster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Poster.h; path = P1/Poster.h; sourceTree = SOURCE_ROOT; };
 		20D7011818B4963E00276136 /* Vision por computador */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Vision por computador"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4244722418F51CB20033FD8D /* practica3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = practica3.cpp; path = P3/practica3.cpp; sourceTree = SOURCE_ROOT; };
+		4244722518F51CB20033FD8D /* practica3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = practica3.h; path = P3/practica3.h; sourceTree = SOURCE_ROOT; };
 		42603BD018D97AE1006D6F2E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = P2/main.cpp; sourceTree = SOURCE_ROOT; };
 		42603BD118D97AE1006D6F2E /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,9 +91,9 @@
 		20D7010F18B4963E00276136 = {
 			isa = PBXGroup;
 			children = (
-				20D7CD8118D97CBE0037BD60 /* P2 */,
 				20A4E60118C8708A00468EC5 /* P1 */,
 				42603BCF18D97AA5006D6F2E /* P2 */,
+				4244722718F51CC60033FD8D /* P3 */,
 				20D7011918B4963E00276136 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +104,16 @@
 				20D7011818B4963E00276136 /* Vision por computador */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4244722718F51CC60033FD8D /* P3 */ = {
+			isa = PBXGroup;
+			children = (
+				4244722418F51CB20033FD8D /* practica3.cpp */,
+				4244722518F51CB20033FD8D /* practica3.h */,
+			);
+			name = P3;
+			path = P2;
 			sourceTree = "<group>";
 		};
 		42603BCF18D97AA5006D6F2E /* P2 */ = {
@@ -169,6 +182,7 @@
 				20084D5A18CE274400569368 /* Vuelta.cpp in Sources */,
 				2085399118C8E4C900A7A7CC /* Main.cpp in Sources */,
 				2085398E18C8E4C900A7A7CC /* Contraste.cpp in Sources */,
+				4244722618F51CB20033FD8D /* practica3.cpp in Sources */,
 				20656BE318C9D47D00A02C19 /* Sepia.cpp in Sources */,
 				2085399018C8E4C900A7A7CC /* Distorsion.cpp in Sources */,
 				2085398D18C8E4C900A7A7CC /* Alien.cpp in Sources */,

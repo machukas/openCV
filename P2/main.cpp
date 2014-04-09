@@ -72,7 +72,7 @@ void votarRecta(int rectas[], int x, int y, int i, int j, float theta, Mat src){
     }
 }
 
-int main( int argc, char** argv ) {
+int  main( int argc, char** argv ) {
     
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////            Parte 1            //////////////////////
@@ -94,7 +94,7 @@ int main( int argc, char** argv ) {
     
     // Se modifican valores para su visualizacion
     angle = (angle/CV_PI)*128;
-    outputX = (-outputX/2)+128;
+    outputX = (outputX/2)+128;
     outputY = (-outputY/2)+128;
     modulo = modulo/4;
     
