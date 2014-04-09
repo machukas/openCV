@@ -76,7 +76,7 @@ void votarRecta(int rectas[], int x, int y,int j, int i, float theta, Mat src){
     }
 }
 
-int main( int argc, char** argv ) {
+int  main( int argc, char** argv ) {
     
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////            Parte 1            //////////////////////
@@ -93,6 +93,14 @@ int main( int argc, char** argv ) {
     Mat angle = Mat::zeros(image_gray.size(),image_gray.type());
     
     sobel_filtering(image_gray,outputX,outputY,modulo,angle);
+    
+    printf("%f %f\n",angle.at<float>(20,30),angle.at<float>(30.40));
+    
+    // Se modifican valores para su visualizacion
+    angle = (angle/CV_PI)*128;
+    outputX = (outputX/2)+128;
+    outputY = (-outputY/2)+128;
+    modulo = modulo/4;
     
     // Se muestran los gradientes, modulo y orientacion
     namedWindow("GradienteX");
