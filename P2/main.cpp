@@ -49,10 +49,12 @@ void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &modulo, Ma
  * que recibe cada pixel del horizonte (y=src.rows/2)de las rectas perpendiculares a los 
  * gradientes de los contornos de la imagen.
  * El punto con mayor numero de votos correspondera con el punto de fuga de la imagen.
+ *
+ * void votarRecta(int rectas[], int x, int y, int i, int j, float theta, Mat src){
  */
-void votarRecta(int rectas[], int x, int y, int i, int j, float theta, Mat src){
+void votarRecta(int rectas[], int x, int y,int j, int i, float theta, Mat src){
     float a = fmod(theta,(CV_PI/2));
-    if (a>0.035) {
+    if (a>0.050) {
         float m = tan(theta-(CV_PI/2));
         float n = y-m*x;
         // interseccion de y=mx+n con y=0
@@ -60,6 +62,7 @@ void votarRecta(int rectas[], int x, int y, int i, int j, float theta, Mat src){
         corte = corte + src.cols/2;
         if (corte<src.cols && corte>=0) {
             rectas[corte] = rectas[corte] + 1;
+            circle(src, Point(j,i), 1, CV_RGB(255,0,0));
             /*
              * Descomentar para visualizar las rectas perpendiculares al gradiente que
              * votan para el calculo del punto de fuga.
@@ -110,7 +113,7 @@ int main( int argc, char** argv ) {
     ///////////////////////////////////////////////////////////////////////////
     
     // Cargar imagen y calcular sus gradientes, orientacion ...
-    Mat src = imread("/Users/amarincolas/Desktop/pasillo1.pgm");
+    Mat src = imread("/Users/amarincolas/Desktop/poster.pgm");
     cvtColor(src, image_gray, CV_BGR2GRAY);
     sobel_filtering(image_gray,outputX,outputY,modulo,angle);
     
@@ -126,7 +129,8 @@ int main( int argc, char** argv ) {
                 int x = j-src.cols/2;       // eje x en funcion del centro
                 int y = src.rows/2 -i;      // eje y en funcion del centro
                 float theta = angle.at<float>(i,j);
-                votarRecta(rectas, x, y, i, j, theta, src);
+                //votarRecta(rectas, x, y, i, j, theta, src);
+                votarRecta(rectas, x, y,j,i, theta, src);
             }
         }
     }
