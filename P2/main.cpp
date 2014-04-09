@@ -76,7 +76,7 @@ void votarRecta(int rectas[], int x, int y,int j, int i, float theta, Mat src){
     }
 }
 
-int  main( int argc, char** argv ) {
+void  main2( int argc, char** argv ) {
     
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////            Parte 1            //////////////////////

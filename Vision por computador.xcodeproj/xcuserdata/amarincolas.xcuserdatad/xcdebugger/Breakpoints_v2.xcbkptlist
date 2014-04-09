@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "main( int argc, char** argv )"
+            landmarkName = "main2( int argc, char** argv )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
             endingLineNumber = "112"
-            landmarkName = "main( int argc, char** argv )"
+            landmarkName = "main2( int argc, char** argv )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
             endingLineNumber = "135"
-            landmarkName = "main( int argc, char** argv )"
+            landmarkName = "main2( int argc, char** argv )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -109,7 +109,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
-            landmarkName = "main( int argc, char** argv )"
+            landmarkName = "main2( int argc, char** argv )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
