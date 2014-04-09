@@ -41,7 +41,7 @@ void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &modulo, Ma
     GaussianBlur(image_gray, image_gray, Size(3,3), 0);
     Sobel(image_gray, outputX, CV_32F, 1, 0, 3);
     Sobel(image_gray, outputY, CV_32F, 0, 1, 3);
-    cartToPolar(-outputX, -outputY, modulo, angle);
+    cartToPolar(outputX, -outputY, modulo, angle);
 }
 
 /**
@@ -51,8 +51,9 @@ void sobel_filtering(Mat image_gray, Mat &outputX, Mat &outputY, Mat &modulo, Ma
  * El punto con mayor numero de votos correspondera con el punto de fuga de la imagen.
  */
 void votarRecta(int rectas[], int x, int y, int i, int j, float theta, Mat src){
-    if (fmod(theta,(CV_PI/2))>0,25) {
-        float m = tan((CV_PI/2)-theta);
+    float a = fmod(theta,(CV_PI/2));
+    if (a>0.035) {
+        float m = tan(theta-(CV_PI/2));
         float n = y-m*x;
         // interseccion de y=mx+n con y=0
         int corte = -n/m;
@@ -100,13 +101,13 @@ int  main( int argc, char** argv ) {
     
     // Se muestran los gradientes, modulo y orientacion
     namedWindow("GradienteX");
-    imshow("GradienteX", (outputX/255));
+    imshow("GradienteX", ((outputX/2)+128)/255);
     namedWindow("GradienteY");
-    imshow("GradienteY", (outputY/255));
+    imshow("GradienteY", ((-outputY/2)+128)/255);
     namedWindow("Orientacion");
-    imshow("Orientacion", angle/255);
+    imshow("Orientacion", ((angle/CV_PI)*128)/255);
     namedWindow("Modulo");
-    imshow("Modulo", (modulo/255));
+    imshow("Modulo", (modulo/4)/255);
     
     for (;;) {
         if (waitKey(30)>=0) { destroyAllWindows();  break; }
