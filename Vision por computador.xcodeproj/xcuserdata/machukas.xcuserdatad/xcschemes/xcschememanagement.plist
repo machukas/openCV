@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>calibracion.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>20D7011718B4963E00276136</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4244723E18F5286A0033FD8D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

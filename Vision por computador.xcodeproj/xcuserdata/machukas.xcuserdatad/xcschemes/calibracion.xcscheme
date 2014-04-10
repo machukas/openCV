@@ -14,20 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "20D7011718B4963E00276136"
-               BuildableName = "Vision por computador"
-               BlueprintName = "Vision por computador"
-               ReferencedContainer = "container:Vision por computador.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "4244723E18F5286A0033FD8D"
                BuildableName = "calibracion"
                BlueprintName = "calibracion"
@@ -46,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "20D7011718B4963E00276136"
-            BuildableName = "Vision por computador"
-            BlueprintName = "Vision por computador"
+            BlueprintIdentifier = "4244723E18F5286A0033FD8D"
+            BuildableName = "calibracion"
+            BlueprintName = "calibracion"
             ReferencedContainer = "container:Vision por computador.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,15 +52,19 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "20D7011718B4963E00276136"
-            BuildableName = "Vision por computador"
-            BlueprintName = "Vision por computador"
+            BlueprintIdentifier = "4244723E18F5286A0033FD8D"
+            BuildableName = "calibracion"
+            BlueprintName = "calibracion"
             ReferencedContainer = "container:Vision por computador.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "P3/camera_calibration/in_VID5.xml"
+            argument = "images/CameraCalibration/IMG_0919.JPG"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "images/CameraCalibration/IMG_0917.JPG"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
@@ -90,9 +80,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "20D7011718B4963E00276136"
-            BuildableName = "Vision por computador"
-            BlueprintName = "Vision por computador"
+            BlueprintIdentifier = "4244723E18F5286A0033FD8D"
+            BuildableName = "calibracion"
+            BlueprintName = "calibracion"
             ReferencedContainer = "container:Vision por computador.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

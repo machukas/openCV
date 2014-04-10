@@ -7,23 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20084D5A18CE274400569368 /* Vuelta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20084D5818CE274400569368 /* Vuelta.cpp */; };
-		20656BE318C9D47D00A02C19 /* Sepia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20656BE118C9D47D00A02C19 /* Sepia.cpp */; };
-		2085398D18C8E4C900A7A7CC /* Alien.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398218C8E4C900A7A7CC /* Alien.cpp */; };
-		2085398E18C8E4C900A7A7CC /* Contraste.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398418C8E4C900A7A7CC /* Contraste.cpp */; };
-		2085398F18C8E4C900A7A7CC /* Dibu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398618C8E4C900A7A7CC /* Dibu.cpp */; };
-		2085399018C8E4C900A7A7CC /* Distorsion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398818C8E4C900A7A7CC /* Distorsion.cpp */; };
-		2085399118C8E4C900A7A7CC /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398A18C8E4C900A7A7CC /* Main.cpp */; };
-		2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2085398B18C8E4C900A7A7CC /* Poster.cpp */; };
-		4244722618F51CB20033FD8D /* practica3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244722418F51CB20033FD8D /* practica3.cpp */; };
-		4244723418F5206C0033FD8D /* camera_calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244722918F5206C0033FD8D /* camera_calibration.cpp */; };
-		4244723518F5206C0033FD8D /* descriptor_extractor_matcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244722D18F5206C0033FD8D /* descriptor_extractor_matcher.cpp */; };
-		4244723618F5206C0033FD8D /* SURF_descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244722F18F5206C0033FD8D /* SURF_descriptor.cpp */; };
-		4244723718F5206C0033FD8D /* SURF_detector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244723018F5206C0033FD8D /* SURF_detector.cpp */; };
-		4244723818F5206C0033FD8D /* SURF_FlannMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244723118F5206C0033FD8D /* SURF_FlannMatcher.cpp */; };
-		4244723918F5206C0033FD8D /* SURF_Homography.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244723218F5206C0033FD8D /* SURF_Homography.cpp */; };
-		4244723A18F5206C0033FD8D /* matcher_simple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244723318F5206C0033FD8D /* matcher_simple.cpp */; };
-		42603BD218D97AE1006D6F2E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42603BD018D97AE1006D6F2E /* main.cpp */; };
+		42B73DE818F52A6E00DB5E54 /* camera_calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244722918F5206C0033FD8D /* camera_calibration.cpp */; };
+		42B73DF918F5373D00DB5E54 /* SURF_Homography.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B73DED18F5372400DB5E54 /* SURF_Homography.cpp */; };
+		42B73E0118F53C4B00DB5E54 /* descriptor_extractor_matcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B73DFD18F539E900DB5E54 /* descriptor_extractor_matcher.cpp */; };
+		42B73E0418F53E3F00DB5E54 /* SURF_descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B73DEA18F5372400DB5E54 /* SURF_descriptor.cpp */; };
+		42B73E0518F53E9E00DB5E54 /* SURF_FlannMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B73DEC18F5372400DB5E54 /* SURF_FlannMatcher.cpp */; };
+		42B73E0618F53EA200DB5E54 /* SURF_detector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B73DEB18F5372400DB5E54 /* SURF_detector.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,39 +25,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		4244723D18F5286A0033FD8D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		20084D5818CE274400569368 /* Vuelta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vuelta.cpp; path = P1/Vuelta.cpp; sourceTree = SOURCE_ROOT; };
-		20084D5918CE274400569368 /* Vuelta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vuelta.h; path = P1/Vuelta.h; sourceTree = SOURCE_ROOT; };
-		20656BE118C9D47D00A02C19 /* Sepia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sepia.cpp; path = P1/Sepia.cpp; sourceTree = SOURCE_ROOT; };
-		20656BE218C9D47D00A02C19 /* Sepia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sepia.h; path = P1/Sepia.h; sourceTree = SOURCE_ROOT; };
-		2085398218C8E4C900A7A7CC /* Alien.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Alien.cpp; path = P1/Alien.cpp; sourceTree = SOURCE_ROOT; };
-		2085398318C8E4C900A7A7CC /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alien.h; path = P1/Alien.h; sourceTree = SOURCE_ROOT; };
-		2085398418C8E4C900A7A7CC /* Contraste.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Contraste.cpp; path = P1/Contraste.cpp; sourceTree = SOURCE_ROOT; };
-		2085398518C8E4C900A7A7CC /* Contraste.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contraste.h; path = P1/Contraste.h; sourceTree = SOURCE_ROOT; };
-		2085398618C8E4C900A7A7CC /* Dibu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dibu.cpp; path = P1/Dibu.cpp; sourceTree = SOURCE_ROOT; };
-		2085398718C8E4C900A7A7CC /* Dibu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dibu.h; path = P1/Dibu.h; sourceTree = SOURCE_ROOT; };
-		2085398818C8E4C900A7A7CC /* Distorsion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Distorsion.cpp; path = P1/Distorsion.cpp; sourceTree = SOURCE_ROOT; };
-		2085398918C8E4C900A7A7CC /* Distorsion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Distorsion.h; path = P1/Distorsion.h; sourceTree = SOURCE_ROOT; };
-		2085398A18C8E4C900A7A7CC /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = P1/Main.cpp; sourceTree = SOURCE_ROOT; };
-		2085398B18C8E4C900A7A7CC /* Poster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Poster.cpp; path = P1/Poster.cpp; sourceTree = SOURCE_ROOT; };
-		2085398C18C8E4C900A7A7CC /* Poster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Poster.h; path = P1/Poster.h; sourceTree = SOURCE_ROOT; };
 		20D7011818B4963E00276136 /* Vision por computador */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Vision por computador"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4244722418F51CB20033FD8D /* practica3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = practica3.cpp; path = P3/practica3.cpp; sourceTree = SOURCE_ROOT; };
-		4244722518F51CB20033FD8D /* practica3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = practica3.h; path = P3/practica3.h; sourceTree = SOURCE_ROOT; };
 		4244722918F5206C0033FD8D /* camera_calibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = camera_calibration.cpp; sourceTree = "<group>"; };
 		4244722A18F5206C0033FD8D /* in_VID5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = in_VID5.xml; sourceTree = "<group>"; };
 		4244722B18F5206C0033FD8D /* out_camera_data.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out_camera_data.yml; sourceTree = "<group>"; };
 		4244722C18F5206C0033FD8D /* VID5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = VID5.xml; sourceTree = "<group>"; };
-		4244722D18F5206C0033FD8D /* descriptor_extractor_matcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = descriptor_extractor_matcher.cpp; path = P3/descriptor_extractor_matcher.cpp; sourceTree = SOURCE_ROOT; };
-		4244722F18F5206C0033FD8D /* SURF_descriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_descriptor.cpp; sourceTree = "<group>"; };
-		4244723018F5206C0033FD8D /* SURF_detector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_detector.cpp; sourceTree = "<group>"; };
-		4244723118F5206C0033FD8D /* SURF_FlannMatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_FlannMatcher.cpp; sourceTree = "<group>"; };
-		4244723218F5206C0033FD8D /* SURF_Homography.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_Homography.cpp; sourceTree = "<group>"; };
-		4244723318F5206C0033FD8D /* matcher_simple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = matcher_simple.cpp; path = P3/matcher_simple.cpp; sourceTree = SOURCE_ROOT; };
-		42603BD018D97AE1006D6F2E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = P2/main.cpp; sourceTree = SOURCE_ROOT; };
-		42603BD118D97AE1006D6F2E /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		4244723F18F5286A0033FD8D /* calibracion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = calibracion; sourceTree = BUILT_PRODUCTS_DIR; };
+		42B73DEA18F5372400DB5E54 /* SURF_descriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_descriptor.cpp; sourceTree = "<group>"; usesTabs = 1; };
+		42B73DEB18F5372400DB5E54 /* SURF_detector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_detector.cpp; sourceTree = "<group>"; };
+		42B73DEC18F5372400DB5E54 /* SURF_FlannMatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_FlannMatcher.cpp; sourceTree = "<group>"; };
+		42B73DED18F5372400DB5E54 /* SURF_Homography.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SURF_Homography.cpp; sourceTree = "<group>"; };
+		42B73DFD18F539E900DB5E54 /* descriptor_extractor_matcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = descriptor_extractor_matcher.cpp; path = P3/descriptor_extractor_matcher.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,37 +58,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4244723C18F5286A0033FD8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		20A4E60118C8708A00468EC5 /* P1 */ = {
-			isa = PBXGroup;
-			children = (
-				2085398218C8E4C900A7A7CC /* Alien.cpp */,
-				2085398418C8E4C900A7A7CC /* Contraste.cpp */,
-				2085398618C8E4C900A7A7CC /* Dibu.cpp */,
-				2085398818C8E4C900A7A7CC /* Distorsion.cpp */,
-				2085398A18C8E4C900A7A7CC /* Main.cpp */,
-				2085398B18C8E4C900A7A7CC /* Poster.cpp */,
-				20656BE118C9D47D00A02C19 /* Sepia.cpp */,
-				20084D5818CE274400569368 /* Vuelta.cpp */,
-				2085398318C8E4C900A7A7CC /* Alien.h */,
-				2085398518C8E4C900A7A7CC /* Contraste.h */,
-				2085398718C8E4C900A7A7CC /* Dibu.h */,
-				2085398918C8E4C900A7A7CC /* Distorsion.h */,
-				2085398C18C8E4C900A7A7CC /* Poster.h */,
-				20656BE218C9D47D00A02C19 /* Sepia.h */,
-				20084D5918CE274400569368 /* Vuelta.h */,
-			);
-			name = P1;
-			path = ../../Dropbox/Universidad/Cuarto/Pendientes/Vision_por_computador/Practicas/P1;
-			sourceTree = "<group>";
-		};
 		20D7010F18B4963E00276136 = {
 			isa = PBXGroup;
 			children = (
-				20A4E60118C8708A00468EC5 /* P1 */,
-				42603BCF18D97AA5006D6F2E /* P2 */,
 				4244722718F51CC60033FD8D /* P3 */,
 				20D7011918B4963E00276136 /* Products */,
 			);
@@ -119,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				20D7011818B4963E00276136 /* Vision por computador */,
+				4244723F18F5286A0033FD8D /* calibracion */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,12 +88,9 @@
 		4244722718F51CC60033FD8D /* P3 */ = {
 			isa = PBXGroup;
 			children = (
+				42B73DFD18F539E900DB5E54 /* descriptor_extractor_matcher.cpp */,
+				42B73DE918F5372400DB5E54 /* features2D */,
 				4244722818F5206C0033FD8D /* camera_calibration */,
-				4244722D18F5206C0033FD8D /* descriptor_extractor_matcher.cpp */,
-				4244722E18F5206C0033FD8D /* features2D */,
-				4244723318F5206C0033FD8D /* matcher_simple.cpp */,
-				4244722418F51CB20033FD8D /* practica3.cpp */,
-				4244722518F51CB20033FD8D /* practica3.h */,
 			);
 			name = P3;
 			path = P2;
@@ -149,26 +108,17 @@
 			path = P3/camera_calibration;
 			sourceTree = SOURCE_ROOT;
 		};
-		4244722E18F5206C0033FD8D /* features2D */ = {
+		42B73DE918F5372400DB5E54 /* features2D */ = {
 			isa = PBXGroup;
 			children = (
-				4244722F18F5206C0033FD8D /* SURF_descriptor.cpp */,
-				4244723018F5206C0033FD8D /* SURF_detector.cpp */,
-				4244723118F5206C0033FD8D /* SURF_FlannMatcher.cpp */,
-				4244723218F5206C0033FD8D /* SURF_Homography.cpp */,
+				42B73DEA18F5372400DB5E54 /* SURF_descriptor.cpp */,
+				42B73DEB18F5372400DB5E54 /* SURF_detector.cpp */,
+				42B73DEC18F5372400DB5E54 /* SURF_FlannMatcher.cpp */,
+				42B73DED18F5372400DB5E54 /* SURF_Homography.cpp */,
 			);
 			name = features2D;
 			path = P3/features2D;
 			sourceTree = SOURCE_ROOT;
-		};
-		42603BCF18D97AA5006D6F2E /* P2 */ = {
-			isa = PBXGroup;
-			children = (
-				42603BD018D97AE1006D6F2E /* main.cpp */,
-				42603BD118D97AE1006D6F2E /* main.h */,
-			);
-			path = P2;
-			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -188,6 +138,23 @@
 			name = "Vision por computador";
 			productName = "Vision por computador";
 			productReference = 20D7011818B4963E00276136 /* Vision por computador */;
+			productType = "com.apple.product-type.tool";
+		};
+		4244723E18F5286A0033FD8D /* calibracion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4244724518F5286A0033FD8D /* Build configuration list for PBXNativeTarget "calibracion" */;
+			buildPhases = (
+				4244723B18F5286A0033FD8D /* Sources */,
+				4244723C18F5286A0033FD8D /* Frameworks */,
+				4244723D18F5286A0033FD8D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = calibracion;
+			productName = calibracion;
+			productReference = 4244723F18F5286A0033FD8D /* calibracion */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -212,6 +179,7 @@
 			projectRoot = "";
 			targets = (
 				20D7011718B4963E00276136 /* Vision por computador */,
+				4244723E18F5286A0033FD8D /* calibracion */,
 			);
 		};
 /* End PBXProject section */
@@ -221,23 +189,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2085399218C8E4C900A7A7CC /* Poster.cpp in Sources */,
-				4244723918F5206C0033FD8D /* SURF_Homography.cpp in Sources */,
-				2085398F18C8E4C900A7A7CC /* Dibu.cpp in Sources */,
-				42603BD218D97AE1006D6F2E /* main.cpp in Sources */,
-				4244723418F5206C0033FD8D /* camera_calibration.cpp in Sources */,
-				4244723A18F5206C0033FD8D /* matcher_simple.cpp in Sources */,
-				20084D5A18CE274400569368 /* Vuelta.cpp in Sources */,
-				2085399118C8E4C900A7A7CC /* Main.cpp in Sources */,
-				2085398E18C8E4C900A7A7CC /* Contraste.cpp in Sources */,
-				4244723718F5206C0033FD8D /* SURF_detector.cpp in Sources */,
-				4244722618F51CB20033FD8D /* practica3.cpp in Sources */,
-				4244723518F5206C0033FD8D /* descriptor_extractor_matcher.cpp in Sources */,
-				4244723818F5206C0033FD8D /* SURF_FlannMatcher.cpp in Sources */,
-				20656BE318C9D47D00A02C19 /* Sepia.cpp in Sources */,
-				2085399018C8E4C900A7A7CC /* Distorsion.cpp in Sources */,
-				4244723618F5206C0033FD8D /* SURF_descriptor.cpp in Sources */,
-				2085398D18C8E4C900A7A7CC /* Alien.cpp in Sources */,
+				42B73E0118F53C4B00DB5E54 /* descriptor_extractor_matcher.cpp in Sources */,
+				42B73DF918F5373D00DB5E54 /* SURF_Homography.cpp in Sources */,
+				42B73DE818F52A6E00DB5E54 /* camera_calibration.cpp in Sources */,
+				42B73E0618F53EA200DB5E54 /* SURF_detector.cpp in Sources */,
+				42B73E0418F53E3F00DB5E54 /* SURF_descriptor.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4244723B18F5286A0033FD8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42B73E0518F53E9E00DB5E54 /* SURF_FlannMatcher.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +293,7 @@
 					"-lopencv_contrib",
 					"-lopencv_features2d",
 					"-lopencv_ml",
+					"-lopencv_nonfree",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -351,6 +316,59 @@
 					"-lopencv_contrib",
 					"-lopencv_features2d",
 					"-lopencv_ml",
+					"-lopencv_nonfree",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4244724618F5286A0033FD8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-lopencv_core",
+					"-lopencv_highgui",
+					"-lopencv_imgproc",
+					"-lopencv_legacy",
+					"-lopencv_calib3d",
+					"-lopencv_objdetect",
+					"-lopencv_video",
+					"-lopencv_contrib",
+					"-lopencv_features2d",
+					"-lopencv_ml",
+					"-lopencv_nonfree",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4244724718F5286A0033FD8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-lopencv_core",
+					"-lopencv_highgui",
+					"-lopencv_imgproc",
+					"-lopencv_legacy",
+					"-lopencv_calib3d",
+					"-lopencv_objdetect",
+					"-lopencv_video",
+					"-lopencv_contrib",
+					"-lopencv_features2d",
+					"-lopencv_ml",
+					"-lopencv_nonfree",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -373,6 +391,15 @@
 			buildConfigurations = (
 				20D7012218B4963E00276136 /* Debug */,
 				20D7012318B4963E00276136 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4244724518F5286A0033FD8D /* Build configuration list for PBXNativeTarget "calibracion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4244724618F5286A0033FD8D /* Debug */,
+				4244724718F5286A0033FD8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
