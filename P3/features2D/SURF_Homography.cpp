@@ -20,7 +20,7 @@ void readme();
  * @function main
  * @brief Main function
  */
-int main( int argc, char** argv )
+int main2( int argc, char** argv )
 {
   if( argc != 3 )
   { readme(); return -1; }

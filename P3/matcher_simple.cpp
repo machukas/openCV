@@ -14,7 +14,7 @@ static void help()
             "Usage:\n matcher_simple <image1> <image2>\n");
 }
 
-int main(int argc, char** argv)
+int main2(int argc, char** argv)
 {
     if(argc != 3)
     {
