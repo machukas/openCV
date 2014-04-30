@@ -20,6 +20,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		4244723D18F5286A0033FD8D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +38,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		20D7011518B4963E00276136 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4244723C18F5286A0033FD8D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				20D7011818B4963E00276136 /* Vision por computador */,
+				4244723F18F5286A0033FD8D /* calibracion */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +100,23 @@
 			productReference = 20D7011818B4963E00276136 /* Vision por computador */;
 			productType = "com.apple.product-type.tool";
 		};
+		4244723E18F5286A0033FD8D /* calibracion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4244724518F5286A0033FD8D /* Build configuration list for PBXNativeTarget "calibracion" */;
+			buildPhases = (
+				4244723B18F5286A0033FD8D /* Sources */,
+				4244723C18F5286A0033FD8D /* Frameworks */,
+				4244723D18F5286A0033FD8D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = calibracion;
+			productName = calibracion;
+			productReference = 4244723F18F5286A0033FD8D /* calibracion */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -105,6 +139,7 @@
 			projectRoot = "";
 			targets = (
 				20D7011718B4963E00276136 /* Vision por computador */,
+				4244723E18F5286A0033FD8D /* calibracion */,
 			);
 		};
 /* End PBXProject section */
@@ -252,6 +287,15 @@
 			buildConfigurations = (
 				20D7012218B4963E00276136 /* Debug */,
 				20D7012318B4963E00276136 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4244724518F5286A0033FD8D /* Build configuration list for PBXNativeTarget "calibracion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4244724618F5286A0033FD8D /* Debug */,
+				4244724718F5286A0033FD8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
