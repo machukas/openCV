@@ -7,12 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		42B73DE818F52A6E00DB5E54 /* camera_calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4244722918F5206C0033FD8D /* camera_calibration.cpp */; };
-		42B73DF918F5373D00DB5E54 /* SURF_Homography.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B73DED18F5372400DB5E54 /* SURF_Homography.cpp */; };
-		42B73E0118F53C4B00DB5E54 /* descriptor_extractor_matcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B73DFD18F539E900DB5E54 /* descriptor_extractor_matcher.cpp */; };
-		42B73E0418F53E3F00DB5E54 /* SURF_descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B73DEA18F5372400DB5E54 /* SURF_descriptor.cpp */; };
-		42B73E0518F53E9E00DB5E54 /* SURF_FlannMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B73DEC18F5372400DB5E54 /* SURF_FlannMatcher.cpp */; };
-		42B73E0618F53EA200DB5E54 /* SURF_detector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B73DEB18F5372400DB5E54 /* SURF_detector.cpp */; };
+		422909D71917D3D10063B073 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 422909D51917D3D10063B073 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		20D7011818B4963E00276136 /* Vision por computador */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Vision por computador"; sourceTree = BUILT_PRODUCTS_DIR; };
+		422909D51917D3D10063B073 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = P3/main.cpp; sourceTree = SOURCE_ROOT; };
 		4244722918F5206C0033FD8D /* camera_calibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = camera_calibration.cpp; sourceTree = "<group>"; };
 		4244722A18F5206C0033FD8D /* in_VID5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = in_VID5.xml; sourceTree = "<group>"; };
 		4244722B18F5206C0033FD8D /* out_camera_data.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out_camera_data.yml; sourceTree = "<group>"; };
@@ -91,6 +87,7 @@
 				42B73DFD18F539E900DB5E54 /* descriptor_extractor_matcher.cpp */,
 				42B73DE918F5372400DB5E54 /* features2D */,
 				4244722818F5206C0033FD8D /* camera_calibration */,
+				422909D51917D3D10063B073 /* main.cpp */,
 			);
 			name = P3;
 			path = P2;
@@ -189,11 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42B73E0118F53C4B00DB5E54 /* descriptor_extractor_matcher.cpp in Sources */,
-				42B73DF918F5373D00DB5E54 /* SURF_Homography.cpp in Sources */,
-				42B73DE818F52A6E00DB5E54 /* camera_calibration.cpp in Sources */,
-				42B73E0618F53EA200DB5E54 /* SURF_detector.cpp in Sources */,
-				42B73E0418F53E3F00DB5E54 /* SURF_descriptor.cpp in Sources */,
+				422909D71917D3D10063B073 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +194,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42B73E0518F53E9E00DB5E54 /* SURF_FlannMatcher.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

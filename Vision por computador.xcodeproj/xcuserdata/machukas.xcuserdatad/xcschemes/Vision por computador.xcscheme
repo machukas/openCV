@@ -74,7 +74,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "P3/camera_calibration/in_VID5.xml"
+            argument = "images/poster/IMG_0941.JPG"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "images/poster/IMG_0942.JPG"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

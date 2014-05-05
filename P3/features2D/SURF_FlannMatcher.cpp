@@ -49,7 +49,7 @@ int main( int argc, char** argv )
   extractor.compute( img_2, keypoints_2, descriptors_2 );
 
   //-- Step 3: Matching descriptor vectors using FLANN matcher
-  FlannBasedMatcher matcher;
+  cv::DescriptorMatcher matcher = cv::DescriptorMatcher::create("FlannBased");
   std::vector< DMatch > matches;
   matcher.match( descriptors_1, descriptors_2, matches );
 

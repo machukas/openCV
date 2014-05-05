@@ -6,11 +6,8 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "opencv2/core/core.hpp"
-#include "opencv2/features2d/features2d.hpp"
-#include "opencv2/highgui/highgui.hpp"
-#include "opencv2/calib3d/calib3d.hpp"
-#include "opencv2/nonfree/features2d.hpp"
+#include <opencv2/nonfree/features2d.hpp>
+#include <opencv2/opencv.hpp>
 
 using namespace cv;
 
@@ -31,6 +28,9 @@ int main( int argc, char** argv )
   if( !img_object.data || !img_scene.data )
   { std::cout<< " --(!) Error reading images " << std::endl; return -1; }
 
+  // Reduce las imagenes de tamano
+  resize(img_object, img_object, Size(1024, 768), 0, 0, INTER_CUBIC);
+  resize(img_scene, img_scene, Size(1024, 768), 0, 0, INTER_CUBIC);
   //-- Step 1: Detect the keypoints using SURF Detector
   int minHessian = 400;
 
