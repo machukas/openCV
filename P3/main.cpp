@@ -19,6 +19,69 @@ using namespace cv;
 void readme()
 { std::cout << " Usage: ./SURF_descriptor <img1> <img2>" << std::endl; }
 
+
+// ----------------------------------------------------------------------------
+Size2i obtenerTamano(Mat foto, Mat acoplada, const Mat Homografia, float *desp_x, float *desp_y)
+// ----------------------------------------------------------------------------
+{
+	Size tam_acoplada = acoplada.size();
+	Size tam_referencia = foto.size();
+    
+	// Obtenemos los puntos de la foto actual en escena
+	vector<Point2f> esq_acoplada(4);
+	esq_acoplada[0] = Point(0,0);
+	esq_acoplada[1] = Point(tam_acoplada.width,0);
+	esq_acoplada[2] = Point(tam_acoplada.width,tam_acoplada.height);
+	esq_acoplada[3] = Point(0,tam_acoplada.height);
+	const cv::Mat mat_acoplada = cv::Mat(esq_acoplada);
+    
+	// Se calculan los puntos transformados con la homografia
+	cv::Mat mat_transf;
+	cv::perspectiveTransform(mat_acoplada,mat_transf,Homografia);
+    
+	// Obtenemos los puntos de la foto a colocar
+	vector<Point2f> esq_transf(4);
+	esq_transf = vector<Point2f>(mat_transf);
+    
+	// Suponemos por defecto que el tamano del lienzo
+	// sera como minimo el de la imagen que tenemos
+	float ancho_min=0.0, ancho_max=tam_referencia.width, alto_max=tam_referencia.height, alto_min=0.0;
+	*desp_x = 0.0; *desp_y = 0.0;
+    
+	// Luego solo se comprueba el tamano de la imagen
+	// a colocar
+	for (unsigned int i=0; i<esq_transf.size(); i++)
+	{
+		if (esq_transf[i].x < ancho_min){ ancho_min = esq_transf[i].x; *desp_x = abs(ancho_min); }
+		if (esq_transf[i].x > ancho_max){	ancho_max = esq_transf[i].x;}
+		if (esq_transf[i].y < alto_min){	alto_min = esq_transf[i].y; *desp_y = abs(alto_min); }
+		if (esq_transf[i].y > alto_max){ alto_max = esq_transf[i].y;}
+	}
+	return Size(ancho_max-ancho_min,alto_max-alto_min);
+}
+
+
+// ----------------------------------------------------------------------------
+Mat unirImagenes(Mat img_1, Mat img_2, Mat Homografia)
+// ----------------------------------------------------------------------------
+{
+	Mat transformada;
+	float desp_x, desp_y;
+	// Se obtiene el tamano y se calcula el desplazamiento de las fotos
+	Size2i tam = obtenerTamano(img_1,img_2,Homografia, &desp_x, &desp_y);
+    
+	// Se transforma la imagen mediante la homografia
+	// y la matriz de desplazamiento M
+	Mat M = (Mat_<double>(3,3) << 1, 0, desp_x, 0, 1, desp_y, 0, 0, 1);
+	Homografia = M * Homografia;
+	warpPerspective(img_1, transformada, M, tam, INTER_CUBIC);
+	warpPerspective(img_2, transformada, Homografia, tam , INTER_CUBIC, BORDER_TRANSPARENT);
+    
+	return transformada;
+}
+
+
+
 /**
  *
  */
@@ -29,8 +92,8 @@ int main( int argc, char** argv )
         return -1;
     }
     
-    Mat img_1 = imread( argv[1], CV_LOAD_IMAGE_GRAYSCALE );
-    Mat img_2 = imread( argv[2], CV_LOAD_IMAGE_GRAYSCALE );
+    Mat img_1 = imread( argv[2], CV_LOAD_IMAGE_GRAYSCALE );
+    Mat img_2 = imread( argv[1], CV_LOAD_IMAGE_GRAYSCALE );
 	
     
     if( !img_1.data || !img_2.data )
@@ -93,16 +156,22 @@ int main( int argc, char** argv )
     
     Mat H = findHomography( obj, scene, CV_RANSAC );
     
+    Mat result =unirImagenes(img_2,img_1,H);
+    /*
     Mat result;
     warpPerspective(img_1, result, H, Size(img_1.cols+img_2.cols,img_2.rows));
     Mat half(result,Rect(0,0,img_2.cols,img_2.rows));
     img_2.copyTo(half);
-    
+    */
     
     //-- Show detected matches
-    imshow( "Good Matches & Object detection", result );
-    
+    namedWindow("Result");
+    //resizeWindow("Result", 4000, 4000);
+    imshow( "Result", result );
+
     waitKey(0);
     
     return 0;
 }
+
+
