@@ -10,6 +10,7 @@
 #include "opencv2/features2d/features2d.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/nonfree/features2d.hpp"
+#include <opencv2/opencv.hpp>
 
 using namespace cv;
 
@@ -19,7 +20,7 @@ void readme();
  * @function main
  * @brief Main function
  */
-int main2( int argc, char** argv )
+int main( int argc, char** argv )
 {
   if( argc != 3 ) {
       readme();
@@ -28,6 +29,9 @@ int main2( int argc, char** argv )
 
   Mat img_1 = imread( argv[1], CV_LOAD_IMAGE_GRAYSCALE );
   Mat img_2 = imread( argv[2], CV_LOAD_IMAGE_GRAYSCALE );
+    
+  resize(img_1, img_1, Size(800,600), 0, 0);
+  resize(img_2, img_2, Size(800,600), 0, 0);
 
   if( !img_1.data || !img_2.data )
   { readme(); return -1; }
@@ -54,7 +58,7 @@ int main2( int argc, char** argv )
   BFMatcher matcher(NORM_L2);
   std::vector< DMatch > matches;
   matcher.match( descriptors_1, descriptors_2, matches );
-
+    
   //-- Draw matches
   Mat img_matches;
   drawMatches( img_1, keypoints_1, img_2, keypoints_2, matches, img_matches );

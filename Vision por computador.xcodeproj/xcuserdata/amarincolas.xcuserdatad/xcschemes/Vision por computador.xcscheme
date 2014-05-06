@@ -43,7 +43,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
-      useCustomWorkingDirectory = "YES"
+      useCustomWorkingDirectory = "NO"
       customWorkingDirectory = "/Users/amarincolas/Dropbox/Universidad/Cuarto/Pendientes/Vision_por_computador/Practicas/P1"
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
@@ -60,7 +60,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "VID5.xml"
+            argument = "/Users/amarincolas/Desktop/hola/in_VID5.xml"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
