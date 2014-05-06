@@ -11,12 +11,23 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <opencv2/nonfree/features2d.hpp>
 #include <opencv2/opencv.hpp>
 #include <sys/types.h>
 #include <dirent.h>
 
 using namespace std;
 using namespace cv;
+
+/*/Users/amarincolas/Developer/img/poster/
+ * /Users/amarincolas/Developer/img/poster/
+ */
+Size2i obtenerTamano(Mat foto, Mat acoplada, const Mat Homografia, float *desp_x, float *desp_y);
+
+/*
+ *
+ */
+Mat unirImagenes(Mat img_1, Mat img_2, Mat Homografia);
 
 /*
  *
@@ -31,12 +42,12 @@ void getDir(char* directorio);
 /*
  *
  */
-vector<Mat> procesarDirectorio(char* directorio);
+vector<Mat> procesarDirectorio(char* directorio, char* inlier);
 
 /*
  *
  */
-void generarPanorama(vector<Mat> imagenes);
+double generarPanorama(vector<Mat> imagenes, bool flag);
 
 
 #endif /* defined(__Vision_por_computador__Trabajo3__) */
