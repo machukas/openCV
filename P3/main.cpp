@@ -48,6 +48,7 @@ while ((ent = readdir (dir)) != NULL)
     if ( (strcmp(ent->d_name, ".")!=0) && (strcmp(ent->d_name, "..")!=0) )
     {
         /* Una vez tenemos el archivo, lo pasamos a una función para procesarlo. */
+        printf("Procesando %s\n", ent->d_name);
         Mat img = imread( strcat(ruta,ent->d_name),CV_LOAD_IMAGE_GRAYSCALE);
         resize(img, img, Size(512, 384), 0, 0, INTER_CUBIC);
         fotos.push_back(img);
