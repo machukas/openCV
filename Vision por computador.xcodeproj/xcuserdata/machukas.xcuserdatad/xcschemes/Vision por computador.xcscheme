@@ -75,6 +75,10 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "./images/monte/"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "./images/poster/"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
