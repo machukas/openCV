@@ -26,7 +26,9 @@ int main( int argc, char** argv )
 
   Mat img_1 = imread( argv[1], CV_LOAD_IMAGE_GRAYSCALE );
   Mat img_2 = imread( argv[2], CV_LOAD_IMAGE_GRAYSCALE );
-
+    
+  resize(img_1, img_1, Size(1024, 768), 0, 0, INTER_CUBIC);
+  
   if( !img_1.data || !img_2.data )
   { std::cout<< " --(!) Error reading images " << std::endl; return -1; }
 

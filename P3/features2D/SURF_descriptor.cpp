@@ -35,6 +35,10 @@ int main( int argc, char** argv )
 
   if( !img_1.data || !img_2.data )
   { readme(); return -1; }
+	
+  // Reduce las imagenes de tamano
+  resize(img_1, img_1, Size(1024, 768), 0, 0, INTER_CUBIC);
+  resize(img_2, img_2, Size(1024, 768), 0, 0, INTER_CUBIC);
 
   //-- Step 1: Detect the keypoints using SURF Detector
   int minHessian = 400;
@@ -61,7 +65,7 @@ int main( int argc, char** argv )
     
   //-- Draw matches
   Mat img_matches;
-  drawMatches( img_1, keypoints_1, img_2, keypoints_2, matches, img_matches );
+  drawMatches( img_1, keypoints_1, img_2, keypoints_2, good_matches, img_matches );
 
   //-- Show detected matches
   imshow("Matches", img_matches );

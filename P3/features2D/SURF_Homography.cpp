@@ -35,6 +35,9 @@ int main( int argc, char** argv )
   if( !img_object.data || !img_scene.data )
   { std::cout<< " --(!) Error reading images " << std::endl; return -1; }
 
+  // Reduce las imagenes de tamano
+  resize(img_object, img_object, Size(1024, 768), 0, 0, INTER_CUBIC);
+  resize(img_scene, img_scene, Size(1024, 768), 0, 0, INTER_CUBIC);
   //-- Step 1: Detect the keypoints using SURF Detector
   int minHessian = 400;
 
