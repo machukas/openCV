@@ -74,12 +74,16 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "images/poster/IMG_0943.JPG"
+            argument = "./images/monte/"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "images/poster/IMG_0943.JPG"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "images/poster/IMG_0944.JPG"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

@@ -10,6 +10,8 @@
 #include <iostream>
 #include <opencv2/nonfree/features2d.hpp>
 #include <opencv2/opencv.hpp>
+#include <sys/types.h>
+#include <dirent.h>
 
 using namespace cv;
 
@@ -19,6 +21,42 @@ using namespace cv;
 void readme()
 { std::cout << " Usage: ./SURF_descriptor <img1> <img2>" << std::endl; }
 
+vector<Mat> procesarDirectorio(char * directorio){
+    vector<Mat> fotos;
+/* Con un puntero a DIR abriremos el directorio */
+DIR *dir;
+/* en *ent habrá información sobre el archivo que se está "sacando" a cada momento */
+struct dirent *ent;
+
+/* Empezaremos a leer en el directorio actual */
+dir = opendir (directorio);
+
+    /* Miramos que no haya error */
+    if (dir == NULL) {
+        printf("dir==NULL");
+        getchar();
+        return fotos;
+    }
+
+/* Leyendo uno a uno todos los archivos que hay */
+    char ruta[50];
+    
+while ((ent = readdir (dir)) != NULL)
+{
+    strcpy(ruta, directorio);
+    /* Nos devolverá el directorio actual (.) y el anterior (..), como hace ls */
+    if ( (strcmp(ent->d_name, ".")!=0) && (strcmp(ent->d_name, "..")!=0) )
+    {
+        /* Una vez tenemos el archivo, lo pasamos a una función para procesarlo. */
+        Mat img = imread( strcat(ruta,ent->d_name),CV_LOAD_IMAGE_GRAYSCALE);
+        resize(img, img, Size(512, 384), 0, 0, INTER_CUBIC);
+        fotos.push_back(img);
+        printf("Se anyade %s\n",ruta);
+    }
+}
+closedir (dir);
+    return fotos;
+}
 
 // ----------------------------------------------------------------------------
 Size2i obtenerTamano(Mat foto, Mat acoplada, const Mat Homografia, float *desp_x, float *desp_y)
@@ -87,22 +125,23 @@ Mat unirImagenes(Mat img_1, Mat img_2, Mat Homografia)
  */
 int main( int argc, char** argv )
 {
-    if( argc != 3 ) {
+    if( argc != 2 ) {
         readme();
         return -1;
     }
     
-    Mat img_1 = imread( argv[2], CV_LOAD_IMAGE_GRAYSCALE );
-    Mat img_2 = imread( argv[1], CV_LOAD_IMAGE_GRAYSCALE );
+    vector<Mat> imagenes = procesarDirectorio(argv[1]);
+    if (imagenes.size()==0){
+        printf("Falla sacar del directorio\n");
+        return -1;
+    }
 	
-    
-    if( !img_1.data || !img_2.data )
-    { readme(); return -1; }
-	
-    // Reduce las imagenes de tamano
-    resize(img_1, img_1, Size(1024, 768), 0, 0, INTER_CUBIC);
-    resize(img_2, img_2, Size(1024, 768), 0, 0, INTER_CUBIC);
-    
+    Mat img_1,img_2;
+    for (int i = 1; i<imagenes.size(); i++) {
+        
+        img_1 = imagenes.at(0);
+        img_2 = imagenes.at(i);
+        
     //-- Step 1: Detect the keypoints using SURF Detector
     int minHessian = 400;
     
@@ -154,9 +193,27 @@ int main( int argc, char** argv )
         scene.push_back( keypoints_2[ good_matches[i].trainIdx ].pt );
     }
     
-    Mat H = findHomography( obj, scene, CV_RANSAC );
+        Mat mask;
+        Mat H = findHomography( obj, scene, CV_RANSAC,3,mask);
+        vector<cv::DMatch> inliers;
+        // Somewhere before I did: findHomography(points1, points2, CV_RANSAC, 3, mask)
+        for (int i = 0; i < obj.size(); i++)
+        {
+            // Select only the inliers (mask entry set to 1)
+            if ((int)mask.at<uchar>(i, 0) == 1)
+            {
+                inliers.push_back(good_matches[i]);
+            }
+        }
+        
+        drawMatches( img_1, keypoints_1, img_2, keypoints_2, inliers, img_matches );
+        imshow("mierda", img_matches);
+        waitKey();
+        
+    Mat result;
+        
     
-    Mat result =unirImagenes(img_2,img_1,H);
+    result =unirImagenes(img_2,img_1,H);
     /*
     Mat result;
     warpPerspective(img_1, result, H, Size(img_1.cols+img_2.cols,img_2.rows));
@@ -168,9 +225,9 @@ int main( int argc, char** argv )
     namedWindow("Result");
     //resizeWindow("Result", 4000, 4000);
     imshow( "Result", result );
-
+        imagenes[0] = result;
     waitKey(0);
-    
+    }
     return 0;
 }
 
