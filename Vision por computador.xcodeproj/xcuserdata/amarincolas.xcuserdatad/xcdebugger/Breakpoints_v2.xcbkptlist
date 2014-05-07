@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "P2/main.cpp"
-            timestampString = "418067840.80751"
+            timestampString = "418124981.236745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "main( int argc, char** argv )"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "main2( int argc, char** argv )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "P2/main.cpp"
-            timestampString = "418067840.80751"
+            timestampString = "418124981.236745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "main( int argc, char** argv )"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "main2( int argc, char** argv )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,26 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "P2/main.cpp"
-            timestampString = "418067321.82138"
+            timestampString = "418121450.801694"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "P2/main.cpp"
-            timestampString = "418067840.80751"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "main( int argc, char** argv )"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "votarRecta(int rectas[], int x, int y,int j, int i, float theta, Mat src)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -88,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "P2/main.cpp"
-            timestampString = "418067840.80751"
+            timestampString = "418124981.236745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "votarRecta(int rectas[], int x, int y, int i, int j, float theta, Mat src)"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "main2( int argc, char** argv )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -104,12 +90,90 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "P2/main.cpp"
-            timestampString = "418067840.80751"
+            timestampString = "418124981.236745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "78"
+            endingLineNumber = "78">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "P2/main.cpp"
+            timestampString = "418124981.236745"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "main2( int argc, char** argv )"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "P3/features2D/SURF_descriptor.cpp"
+            timestampString = "420534448.772676"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "main( int argc, char** argv )"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "P3/features2D/SURF_descriptor.cpp"
+            timestampString = "420534340.381456"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "main( int argc, char** argv )"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "P3/Trabajo3.cpp"
+            timestampString = "421138465.07078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "main()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "P3/Trabajo3.cpp"
+            timestampString = "421138465.07078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "main()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
