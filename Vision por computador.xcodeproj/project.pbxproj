@@ -7,11 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< HEAD
-		4283C72819193A4400769DF4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 422909D51917D3D10063B073 /* main.cpp */; };
-=======
 		20DE97AA1918CB7E00AD3205 /* Trabajo3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 204019BD1917E96800576E10 /* Trabajo3.cpp */; };
->>>>>>> FETCH_HEAD
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +37,7 @@
 		204019BA1917E1BB00576E10 /* panorama.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = panorama.hpp; sourceTree = "<group>"; };
 		204019BD1917E96800576E10 /* Trabajo3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Trabajo3.cpp; path = P3/Trabajo3.cpp; sourceTree = "<group>"; };
 		204019BE1917E96800576E10 /* Trabajo3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trabajo3.h; path = P3/Trabajo3.h; sourceTree = "<group>"; };
+		20A0AC5B19193156009D71AD /* camera_calibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera_calibration.cpp; path = P3/camera_calibration/camera_calibration.cpp; sourceTree = "<group>"; };
 		20D7011818B4963E00276136 /* Vision por computador */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Vision por computador"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DE97A61918C96A00AD3205 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = P3/main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +74,7 @@
 		20D7010F18B4963E00276136 = {
 			isa = PBXGroup;
 			children = (
+				20A0AC5B19193156009D71AD /* camera_calibration.cpp */,
 				20DE97A61918C96A00AD3205 /* main.cpp */,
 				204019BD1917E96800576E10 /* Trabajo3.cpp */,
 				204019BE1917E96800576E10 /* Trabajo3.h */,
@@ -161,11 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				4283C72819193A4400769DF4 /* main.cpp in Sources */,
-=======
 				20DE97AA1918CB7E00AD3205 /* Trabajo3.cpp in Sources */,
->>>>>>> FETCH_HEAD
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

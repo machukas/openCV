@@ -9,6 +9,37 @@
 #include "Trabajo3.h"
 
 // ----------------------------------------------------------------------------
+vector<Mat> capturarFotos()
+// ----------------------------------------------------------------------------
+{
+	bool fin = false;
+	int tecla;
+	Mat ventana;
+    vector<Mat> fotos;
+	VideoCapture objetivo(0);
+	if(!objetivo.isOpened()) return fotos;
+    
+	// Mensaje informativo de uso
+	cout << "  Capturando de la camara: f para tomar foto, s para salir.\n";
+    
+	while (!fin ) {
+		// Muestra el streaming en vivo de la camara de fotos
+		objetivo >> ventana;
+		imshow("Objetivo", ventana);
+        
+		tecla = waitKey(30);
+		if (tecla == 'f'){
+            fotos.push_back((ventana.clone()));
+            cout << "  Foto tomada correctamente.\n";
+		}
+		else if (tecla == 's') fin = true;
+	}
+    destroyAllWindows();
+	return fotos;
+}
+
+
+// ----------------------------------------------------------------------------
 Mat marcoPanorama(Mat foto, Mat acoplada, const Mat Homografia, Size2i *tam) {
 // ----------------------------------------------------------------------------
 	float desp_x, desp_y;
@@ -271,7 +302,10 @@ int main() {
             waitKey(0);
             destroyAllWindows();
         } else if (!opcion.compare("2")) {
-            // En vivo
+            vector<Mat> imagenes = capturarFotos();
+            printf("Tiempo de calculo total = %f segundos.\n", (double)generarPanorama(imagenes,flag));
+            waitKey(0);
+            destroyAllWindows();
         }
         showMenu();
         cin >> opcion;
