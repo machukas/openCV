@@ -79,6 +79,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "./images/poster/"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "./P3/camera_calibration/in_VID5.xml"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

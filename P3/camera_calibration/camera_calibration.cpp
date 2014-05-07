@@ -151,7 +151,9 @@ public:
         }
         else if( atImageList < (int)imageList.size() )
             result = imread(imageList[atImageList++], CV_LOAD_IMAGE_COLOR);
-
+        if (!result.empty()){
+            resize(result, result, Size(512, 384), 0, 0, INTER_CUBIC);
+        }
         return result;
     }
 
