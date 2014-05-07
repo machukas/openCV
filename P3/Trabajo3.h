@@ -22,12 +22,12 @@ using namespace cv;
 /*/Users/amarincolas/Developer/img/poster/
  * /Users/amarincolas/Developer/img/poster/
  */
-Size2i obtenerTamano(Mat foto, Mat acoplada, const Mat Homografia, float *desp_x, float *desp_y);
+Mat marcoPanorama(Mat foto, Mat acoplada, const Mat Homografia, Size2i *tam);
 
 /*
  *
  */
-Mat unirImagenes(Mat img_1, Mat img_2, Mat Homografia);
+Mat merge(Mat img_1, Mat img_2, Mat Homografia);
 
 /*
  *
@@ -38,6 +38,8 @@ void showMenu();
  *
  */
 void getDir(char* directorio);
+
+void calibrar();
 
 /*
  *
